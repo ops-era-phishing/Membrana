@@ -1,34 +1,29 @@
-name: Atualizar Fórum MEMBRANA
+name: Publicar comentário no fórum
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'  # a cada 30 min
-  workflow_dispatch:
+  push:
+    paths:
+      - comentarios/entrada.txt
 
 jobs:
-  update-forum:
+  comentar:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
+      - name: Clonar repo
         uses: actions/checkout@v3
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Instalar dependências
-        run: npm install graphql-request
-
-      - name: Executar script de fetch
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: node src/fetch-discussions.js
-
-      - name: Commit e push do JSON
+      - name: Ler conteúdo
+        id: mensagem
         run: |
-          git config user.name "MembranaBot"
-          git config user.email "membrana@bot.com"
-          git add public/forum.json
-          git commit -m "🤖 Atualização automática do fórum"
-          git push
+          BODY=$(cat comentarios/entrada.txt)
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          echo "$BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Comentar na Discussão
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/ops-era-phishing/Membrana/discussions/DISCUSSION_ID/comments \
+            -d "{\"body\": \"${{ steps.mensagem.outputs.body }}\"}"
