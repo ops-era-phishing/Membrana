@@ -1,18 +1,34 @@
-name: Processar Posts do Fórum
+name: Atualizar Fórum MEMBRANA
+
 on:
-  workflow_dispatch: # Permite acionar manualmente
-  repository_dispatch: # Para acionar via API
+  schedule:
+    - cron: '*/30 * * * *'  # a cada 30 min
+  workflow_dispatch:
 
 jobs:
-  process_post:
+  update-forum:
     runs-on: ubuntu-latest
     steps:
-      - name: Enviar post para Discussions
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm install graphql-request
+
+      - name: Executar script de fetch
         env:
-          GITHUB_TOKEN: ${{ secrets.FORUM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: node src/fetch-discussions.js
+
+      - name: Commit e push do JSON
         run: |
-          curl -X POST \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/discussions \
-            -d '{"title":"Novo post via Action", "body":"${{ github.event.client_payload.message }}", "category":"General"}'
+          git config user.name "MembranaBot"
+          git config user.email "membrana@bot.com"
+          git add public/forum.json
+          git commit -m "🤖 Atualização automática do fórum"
+          git push
