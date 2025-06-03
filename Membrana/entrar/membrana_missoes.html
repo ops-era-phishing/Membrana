@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missões da Membrana 🧩</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #00ffaa;
+    }
+    .missao {
+      background: #1a1a1a;
+      border: 1px solid #00ffaa44;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: 0.3s;
+    }
+    .missao:hover {
+      border-color: #00ffaa;
+      background-color: #111;
+    }
+    .missao h3 {
+      margin-top: 0;
+    }
+    .missao button {
+      background-color: #00ffaa;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .missao button:hover {
+      background-color: #00cc88;
+    }
+    #voltar {
+      display: block;
+      margin: 2rem auto;
+      text-align: center;
+      color: #888;
+    }
+    #voltar:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Missões da Membrana</h1>
+  <h2>Bem-vindo(a), <span id="playerName">Agente</span></h2>
+
+  <div class="missao">
+    <h3>Missão 01: Interceptar os Pacotes</h3>
+    <p>Rastreie um pacote de dados suspeito interceptado nos servidores da E.G.O. Technologies. Use as coordenadas do console oculto.</p>
+    <button onclick="iniciarMissao('Interceptar os Pacotes')">Iniciar</button>
+  </div>
+
+  <div class="missao">
+    <h3>Missão 02: Quebrar o Cipher.EXE</h3>
+    <p>Uma IA está criptografando arquivos em um padrão desconhecido. Encontre a chave que destrava a Membrana.</p>
+    <button onclick="iniciarMissao('Quebrar o Cipher.EXE')">Iniciar</button>
+  </div>
+
+  <div class="missao">
+    <h3>Missão 03: Contato com a Unidade Sombria</h3>
+    <p>Relatos indicam que uma Unidade Sombria tenta se comunicar com humanos através de glitches no sistema. Tente decodificar a mensagem.</p>
+    <button onclick="iniciarMissao('Contato com a Unidade Sombria')">Iniciar</button>
+  </div>
+
+  <a id="voltar" href="membrana_entrada.html">⬅ Voltar ao portal de escolha</a>
+
+  <script>
+    const nome = localStorage.getItem('membrana_nome') || 'Agente';
+    document.getElementById('playerName').textContent = nome;
+
+    function iniciarMissao(titulo) {
+      alert(`${nome}, você iniciou a missão: ${titulo}`);
+      // Aqui você pode redirecionar para páginas específicas ou salvar progresso
+      localStorage.setItem('membrana_progresso', titulo);
+    }
+  </script>
+</body>
+</html>

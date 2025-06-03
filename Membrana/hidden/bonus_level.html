@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bônus Level | Terminal QSR-0</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      margin: 0;
+    }
+    #terminal {
+      max-width: 800px;
+      margin: auto;
+      background: #111;
+      border: 1px solid #0f0;
+      padding: 1rem;
+      box-shadow: 0 0 10px #0f0;
+    }
+    .output {
+      white-space: pre-line;
+      margin-bottom: 1rem;
+    }
+    .input-line {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .input-line::before {
+      content: "$ ";
+    }
+    input {
+      background: #000;
+      border: none;
+      color: #0f0;
+      font-family: inherit;
+      width: 100%;
+      outline: none;
+    }
+    #locked {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    <div class="output" id="output">
+      Verificando permissões de acesso...
+    </div>
+    <div class="input-line">
+      <input type="text" id="command" placeholder="Digite um comando...">
+    </div>
+  </div>
+
+  <script>
+    const output = document.getElementById('output');
+    const commandInput = document.getElementById('command');
+
+    // Checagem de progresso salvo
+    const acessoLiberado = localStorage.getItem("fragmento1") &&
+                           localStorage.getItem("fragmento2") &&
+                           localStorage.getItem("conteudo_secreto1");
+
+    if (!acessoLiberado) {
+      output.innerHTML += "\n\n<acesso negado> Fragmentos insuficientes.\nVolte e conclua todas as missões para desbloquear o BÔNUS LEVEL.";
+      commandInput.disabled = true;
+      commandInput.placeholder = "Acesso bloqueado...";
+    } else {
+      output.innerHTML += "\n<acesso concedido> Terminal da QSR-0 inicializado.\nDigite 'help' para listar comandos disponíveis.";
+
+      const comandosValidos = {
+        "help": "Comandos disponíveis:\n- scan fragmentos\n- connect QSR-0\n- inject override.key\n- unlock final_core",
+        "scan fragmentos": "Fragmentos verificados: 3/3\nStatus: OK",
+        "connect QSR-0": "Estabelecendo conexão...\n[sucesso] IA detectada.",
+        "inject override.key": "Override autorizado. Preparando acesso ao núcleo final...",
+        "unlock final_core": "Acesso liberado. Abrindo arquivo corrompido...
+\nhttps://seulinkseguro.com/final (simulação)"
+      };
+
+      commandInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          const comando = commandInput.value.trim();
+          output.innerHTML += `\n$ ${comando}`;
+
+          if (comandosValidos[comando]) {
+            output.innerHTML += `\n${comandosValidos[comando]}`;
+          } else {
+            output.innerHTML += `\nComando inválido ou desconhecido.`;
+          }
+
+          output.scrollTop = output.scrollHeight;
+          commandInput.value = "";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

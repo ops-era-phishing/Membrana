@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Missão 3 – O E-mail que Nunca Chegou</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0e0e0e;
+      color: #e6e6e6;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #ff4c4c;
+      border-bottom: 2px solid #ff4c4c;
+      padding-bottom: 0.5rem;
+    }
+    .painel {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .destacado {
+      color: #00ff99;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      background: #121212;
+      color: #00ff99;
+      border: 1px solid #333;
+      padding: 1rem;
+      font-family: monospace;
+    }
+    button {
+      margin-top: 1rem;
+      background: #00ff99;
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #00cc77;
+    }
+    .resposta {
+      margin-top: 1rem;
+      background: #222;
+      padding: 1rem;
+      border: 1px dashed #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Missão 3 – O E-mail que Nunca Chegou</h1>
+  <p>Interceptamos um e-mail misterioso que deveria ter sido entregue à sede da <span class="destacado">E.G.O. Technologies</span>, mas ele nunca chegou ao destino. Seu trabalho é encontrar a informação que foi escondida dentro do conteúdo corrompido.</p>
+  
+  <div class="painel">
+    <h2>🕵️ Conteúdo interceptado:</h2>
+    <textarea readonly>
+From: anon@protonmail.com
+To: e.g.o.admin@confidencial.org
+Subject: [ARQUIVO PERDIDO - QSR-0]
+
+qStz'u Yzngxnxy | rjxxflj: Xjhwjy tk fqq, yt ijhmsnsl dtz nx ymfy xmtzsi tzlm xqfj, xhfq ljsyjw yt dtz si xt ajwd Rfpns mfi Snhp. Nx sty xjhwjy, dtz xbtz lfw gjjs ijxp.
+
+- Ktw fsi Gzyjw
+    </textarea>
+
+    <p><strong>⚠️ Dica:</strong> Parece cifrado... e bem no estilo <em>César</em>.</p>
+
+    <button onclick="mostrarResposta()">Ver dica do conteúdo</button>
+    <div id="resposta" class="resposta" style="display: none;">
+      <p>Use uma ferramenta de decodificação de <strong>Cifra de César</strong> com deslocamento 5 para descobrir o conteúdo real.</p>
+      <p><code>"Não confie em tudo que vê, principalmente se for fácil demais..."</code></p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarResposta() {
+      document.getElementById('resposta').style.display = 'block';
+    }
+  </script>
+  <script>
+  localStorage.setItem("missao3", "completa");
+  localStorage.setItem("conteudo_secreto1", "true");
+</script>
+
+<a href="painel.html" style="display:block;text-align:center;margin-top:2rem;">
+  🔍 Ir para o Painel do Jogador
+</a>
+</body>
+</html>

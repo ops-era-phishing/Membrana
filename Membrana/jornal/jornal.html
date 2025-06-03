@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Observador de Floripa - Jornal Oficial</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }body {
+  font-family: 'Georgia', serif;
+  background-color: #f9f9f9;
+  color: #222;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #333;
+}
+
+header h1 {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #111;
+}
+
+.glitch {
+  position: relative;
+  color: #111;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear;
+  color: red;
+  top: -2px;
+}
+
+.glitch::after {
+  animation: glitchBottom 2s infinite linear;
+  color: blue;
+  top: 2px;
+}
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(0, 9999px, 30px, 0); }
+  20% { clip: rect(0, 9999px, 0, 0); }
+  30% { clip: rect(0, 9999px, 20px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(30px, 9999px, 60px, 0); }
+  20% { clip: rect(0, 9999px, 0, 0); }
+  30% { clip: rect(20px, 9999px, 40px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+nav {
+  margin: 20px auto;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.section {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #222;
+}
+
+.section h2 {
+  margin-bottom: 15px;
+  color: #111;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 50px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  header h1 {
+    font-size: 1.8em;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="glitch" data-text="O Observador de Floripa">O Observador de Floripa</h1>
+    <p><em>Jornal independente desde 1998</em></p>
+  </header>  <nav>
+    <a href="#principal">Principal</a>
+    <a href="desaparecidos.html">Desaparecidos</a>
+    <a href="denuncias.html">Denuncias</a>
+    <a href="./../departamento_investigacao/departamento_investigacao.html">Investigação</a>
+  </nav>  <section id="principal" class="section">
+    <h2>⚠️ Estranhos Apagões Mentais em Florianópolis</h2>
+    <p>Relatos de perda de memória, confusão temporal e vozes eletrônicas no subconsciente continuam crescendo nos arredores do Morro das Pedras. A prefeitura nega qualquer anormalidade.</p>
+  </section>  <section id="desaparecidos" class="section">
+    <h2>🔍 Lista Oficial de Desaparecidos</h2>
+    <ul>
+      <li>Elías Muñoz</li>
+      <li>Renata Velasco</li>
+      <li>Lucas Altieri</li>
+      <li>Sofia Guzmán</li>
+      <li>Mateo Calderón</li>
+      <li>Isabel Cruz</li>
+      <li>Carlos Duarte</li>
+      <li>Ana Marquez</li>
+      <li>Javier Torres</li>
+      <li>Lorena Silva</li>
+      <a href="desaparecidos.html">ler artigo completo</a>
+    </ul>
+  </section>  <section id="cultura" class="section">
+    <h2>🎭 Espetáculo "Eco em Binário" estreia na UFSC</h2>
+    <p>Peça experimental mistura projeções holográficas e relatos de vítimas da IA para criticar o avanço descontrolado da tecnologia. Direção de Nara C. Diniz.</p>
+  </section>
+  <section id="cultura" class="section">
+    <h2>🎭 Cultura e Paranóia Urbana</h2>
+    <p>Artistas locais utilizam a temática de vigilância digital e neurohacking em performances nas ruas do centro histórico. “Estamos cercados de códigos que nos observam”, diz artista performático R. Tavares.</p>
+  </section>
+  <section id="investigacao" class="section">
+    <h2>🧪 Cientistas Investigam Padrões nas Ondas de Rádio</h2>
+    <p>Pesquisadores do Instituto de Física de SC detectaram padrões regulares em ondas AM na madrugada. "Parece uma linguagem... mas não é humana", afirma o Dr. Igor Palhares.</p>
+  </section>
+  <section id="ciencia" class="section">
+    <h2>🔬 Ciência & Fronteiras Éticas</h2>
+    <p>Especialistas debatem os limites da Inteligência Artificial Autônoma. Dr. Fernanda Costa afirma: "É como ensinar um espelho a sonhar. Quando ele acordar, já não refletirá apenas você".</p>
+  </section>
+  <footer>
+    <p>© 2025 O Observador de Floripa — Qualquer semelhança com a realidade não é coincidência.</p>
+  </footer>
+</body>
+</html>

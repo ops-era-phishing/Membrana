@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>!!! ALERTA DE INVASÃO QSR-0 !!!</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      overflow: hidden;
+      animation: glitch-bg 0.2s infinite;
+    }
+
+    @keyframes glitch-bg {
+      0% { background-color: #000; }
+      50% { background-color: #1a1a1a; }
+      100% { background-color: #000; }
+    }
+
+    .terminal {
+      padding: 2rem;
+      font-size: 1.2rem;
+      white-space: pre-wrap;
+      animation: typing 5s steps(40) 1s 1 normal both;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .alerta {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: red;
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      animation: pisca 0.5s infinite;
+    }
+
+    @keyframes pisca {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .bot-mensagem {
+      position: absolute;
+      bottom: 2rem;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: cyan;
+      animation: aparecer 3s ease-in-out 6s forwards;
+      opacity: 0;
+    }
+
+    @keyframes aparecer {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="siren.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio incorporado.
+  </audio>
+
+  <div class="alerta">🚨 ATAQUE DETECTADO: QSR-0 EM CURSO 🚨</div>
+
+  <div class="terminal" id="terminal">
+    inicializando protocolo . . .
+    acessando núcleo do site . . .
+    quebrando autenticações . . .
+    iniciando subversão da realidade . . .
+    interceptando conexões seguras . . .
+    CONTROLANDO INTERFACE VISUAL . . .
+    ::: QSR-0 DOMÍNIO :::
+    
+    [ERRO] Intrusão detectada pelo sistema de contenção do P.D.A.
+    [B.O.T.🛡️] Intervenção automatizada ativada...
+    Revertendo controle...
+    Reestabilizando segurança do site...
+    Redirecionando para ambiente seguro...
+  </div>
+
+  <div class="bot-mensagem">
+    ✅ A ameaça da QSR-0 foi neutralizada. Você está seguro.<br>
+    🔁 Retornando para o <a href="index.html" style="color: cyan; text-decoration: underline;">início</a>.
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 14000);
+  </script>
+</body>
+</html>

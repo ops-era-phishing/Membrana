@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central ARG - ops, era phishing</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0c0c0c;
+  color: #fff;
+  line-height: 1.6;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+nav {
+  position: relative;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar2 {
+  opacity: 0;
+}
+
+.hamburger.active .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding-top: 60px;
+}
+
+.section {
+  padding: 4rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.section.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.setores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  border: 1px solid #444;
+  transition: background 0.3s ease;
+}
+
+.card:hover {
+  background: #333;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #111;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #111;
+    flex-direction: column;
+    width: 200px;
+    text-align: right;
+    padding: 1rem;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ops, era phishing</div>
+    <nav>
+      <div class="hamburger" id="hamburger">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#missao">Missão</a></li>
+        <li><a href="#setores">Setores</a></li>
+        <li><a href="#acesso">Acesso</a></li>
+        <li><a href="info.html">+Info</a></li>
+      </ul>
+    </nav>
+  </header>  <main>
+    <section id="inicio" class="section">
+      <h2>⚠️ Alerta Geral</h2>
+      <p>Este é o início da central de inteligência do ARG "MEMBRANA". Prepare-se para entrar no rastro da QSR-0.</p>
+    </section><section id="missao" class="section">
+  <h2>📡 Missão</h2>
+  <p>Você está prestes a mergulhar em uma rede de conspirações digitais. Seu objetivo é seguir as pistas e descobrir o que realmente está por trás da E.G.O. Technologies e sua IA fugitiva.</p>
+</section>
+
+<section id="setores" class="section">
+  <h2>🧭 Setores de Operação</h2>
+  <div class="setores-grid">
+    <a href="jornal/jornal.html" class="card">🗞 Jornal Local</a>
+    <a href="departamento_investigacao/departamento_investigacao.html" class="card">🕵️ Departamento de Investigação</a>
+    <a href="arquivo/arquivo.html" class="card">📁 Arquivo Membrana</a>
+    <a href="#" class="card">💻 Fórum Civil</a>
+    <a href="wiki/index.html" class="card">## Wiki Escura</a>
+  </div>
+</section>
+
+<section id="acesso" class="section acesso">
+  <h2>🎮 Começar Jogo</h2>
+  <button onclick="alert('Iniciando...')"id="meuBotao">Entrar na Membrana</button>
+</section>
+
+  </main>  <footer>
+    <p>© 2025 Central ARG - <a href="#">ops, era phishing</a>. Todos os dados são ficção (ou não).</p>
+  </footer>  <script src="script.js"></script>
+<script>
+  document.getElementById("meuBotao").addEventListener("click", function () {
+    // Mostra o pop-up (pode ser um alert ou algo mais estiloso com CSS/JS)
+    alert("Você está prestes a ser redirecionado...");
+
+    // Espera 1 segundos e redireciona
+    setTimeout(function () {
+      window.location.href = "membrana_entrada.html";
+    }, 1000);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missão 2 - O Dossiê Esquecido</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #00ff99;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .terminal {
+      background: #111;
+      border: 2px solid #00ff99;
+      padding: 1rem;
+      margin-top: 2rem;
+      overflow-x: auto;
+    }
+    h1 {
+      color: #00ff99;
+      text-shadow: 0 0 5px #00ff99;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      background: #000;
+      color: #0f0;
+      border: 1px solid #0f0;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #00ff99;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .oculto {
+      display: none;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Missão 2: O Dossiê Esquecido</h1>
+  <p>Interceptamos um fragmento corrompido de um arquivo da QSR-0. Ele está criptografado em uma forma simples, mas incomum. Precisa ser decifrado antes que a entidade o apague permanentemente.</p>
+  
+  <div class="terminal">
+    <p><strong>Arquivo corrompido:</strong></p>
+    <pre id="fragmento">Dpsu!rvx!jnt!dpuspmbez!mfwfm/!Vtbs!uif!tfnbl!up!eftdpezf/</pre>
+    <p>Digite a frase decodificada:</p>
+    <input type="text" id="resposta" placeholder="Sua resposta aqui">
+    <button onclick="verificarResposta()">Verificar</button>
+    <p class="oculto" id="feedback"></p>
+  </div>
+
+  <script>
+    function verificarResposta() {
+      const input = document.getElementById("resposta").value.trim().toLowerCase();
+      const correta = "corpo que ims controlady level. usar the smak to decode";
+      const feedback = document.getElementById("feedback");
+
+      if (input.replace(/[^a-z]/g, '') === correta.replace(/[^a-z]/g, '')) {
+        feedback.textContent = "✅ Decodificado com sucesso. Prepare-se para o próximo passo.";
+        feedback.style.color = "#00ff99";
+      } else {
+        feedback.textContent = "❌ Resposta incorreta. Tente novamente. Dica: é um tipo de cifra simples.";
+        feedback.style.color = "#ff5555";
+      }
+      feedback.classList.remove("oculto");
+    }
+  </script>
+  <script>
+  localStorage.setItem("missao2", "completa");
+  localStorage.setItem("fragmento2", "true");
+</script>
+
+<a href="painel.html" style="display:block;text-align:center;margin-top:2rem;">
+  🔍 Ir para o Painel do Jogador
+</a>
+</body>
+</html>
+

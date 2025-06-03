@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada da Membrana</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      padding: 0.7rem;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    button {
+      background: transparent;
+      border: 2px solid #0f0;
+      color: #0f0;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: #0f0;
+      color: #000;
+    }
+    .glitch {
+      animation: glitch 1s infinite;
+      color: #f00;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bem-vindo à <span class="glitch">MEMBRANA</span></h1>
+  <p>Digite como deseja ser lembrado(a):</p>
+  <input type="text" id="nomeUsuario" placeholder="Ex: Elías" />
+  <div id="caminhos" style="display: none;">
+    <p>Escolha seu caminho:</p>
+    <button onclick="escolherCaminho('missoes')">Seguir Missões 🧩</button>
+    <button onclick="escolherCaminho('quebracabecas')">Hackear a IA 🤖</button>
+  </div>
+
+  <script>
+    const nomeInput = document.getElementById('nomeUsuario');
+    const caminhosDiv = document.getElementById('caminhos');
+
+    nomeInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        const nome = nomeInput.value.trim();
+        if (nome !== '') {
+          localStorage.setItem('usuario', nome);
+          caminhosDiv.style.display = 'block';
+          nomeInput.style.display = 'none';
+        }
+      }
+    });
+
+    function escolherCaminho(caminho) {
+      const nome = localStorage.getItem('usuario');
+      const progresso = JSON.parse(localStorage.getItem('progresso')) || {
+        missoes: [],
+        quebracabecas: []
+      };
+      localStorage.setItem('caminhoAtual', caminho);
+      localStorage.setItem('progresso', JSON.stringify(progresso));
+      localStorage.setItem('ultimoAcesso', new Date().toISOString());
+      
+      // Redireciona para o caminho escolhido
+      if (caminho === 'missoes') {
+        window.location.href = 'membrana_missoes.html';
+      } else {
+        window.location.href = 'membrana_quebracabecas.html';
+      }
+    }
+  </script>
+</body>
+</html>

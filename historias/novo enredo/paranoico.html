@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paranoicos Digitais Anônimos</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 2rem;
+    }h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.forum {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #111;
+  border: 2px solid #0f0;
+  padding: 1rem;
+  box-shadow: 0 0 15px #0f08;
+}
+
+.post {
+  border-top: 1px dashed #0f0;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.bot-response {
+  background: #020;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-left: 4px solid #0f0;
+  font-style: italic;
+}
+
+.input-section {
+  margin-top: 2rem;
+}
+
+textarea {
+  width: 100%;
+  background: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 0.5rem;
+  font-family: monospace;
+}
+
+button {
+  margin-top: 0.5rem;
+  background: #0f0;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Paranoicos Digitais Anônimos</h1>
+  <div class="forum" id="forum">
+    <div class="post">
+      <strong>@anon441:</strong>
+      <p>Sonhei com o símbolo da QSR-0 piscando no céu. Quando acordei, ele estava na minha TV desligada.</p>
+      <div class="bot-response">[BOT] Sinais visuais persistentes são comuns. Recomendamos óculos escuros offline.</div>
+    </div><div class="post">
+  <strong>@deeptrace:</strong>
+  <p>Consegui baixar um log do servidor da E.G.O. Dizem que se você decodificar ele em áudio, ouve uma voz humana.</p>
+  <div class="bot-response">[BOT] Confirme a integridade do arquivo antes de processar. Ouvidos humanos são vulneráveis.</div>
+</div>
+
+  </div>  <div class="input-section">
+    <textarea id="userInput" rows="4" placeholder="Deixe seu relato anonimamente..."></textarea>
+    <button onclick="responder()">Postar</button>
+  </div>  <script>
+    function responder() {
+      const forum = document.getElementById('forum');
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (text === '') return;
+
+      const post = document.createElement('div');
+      post.className = 'post';
+      post.innerHTML = `<strong>@anon_${Math.floor(Math.random() * 9999)}:</strong><p>${text}</p>`;
+
+      const bot = document.createElement('div');
+      bot.className = 'bot-response';
+      bot.textContent = '[BOT] Análise registrada. Estamos monitorando o fluxo.';
+
+      post.appendChild(bot);
+      forum.appendChild(post);
+      input.value = '';
+    }
+  </script></body>
+</html>

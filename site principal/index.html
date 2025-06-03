@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEMBRANA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: radial-gradient(ellipse at center, #000 0%, #111 100%);
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 600px;
+      animation: fadeIn 2s ease;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #5effd7;
+      text-shadow: 0 0 10px #5effd7aa;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    .enter-btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: transparent;
+      color: #5effd7;
+      border: 2px solid #5effd7;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .enter-btn:hover {
+      background-color: #5effd7;
+      color: #000;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>VOCÊ JÁ ESTÁ DENTRO</h1>
+    <p>Este é o ponto de entrada para um ARG em constante mutação. MEMBRANA não é um jogo — é uma entidade sensorial que vive entre códigos e paranoia.
+    </p>
+    <button class="enter-btn" onclick="location.href='inicio.html'">ENTRAR NA MEMBRANA</button>
+  </div>
+</body>
+</html>

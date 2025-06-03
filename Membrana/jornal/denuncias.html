@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denúncias Anônimas – Observador de Floripa</title>
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+      background: #f9f9f9;
+      color: #111;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #000;
+      padding-bottom: 0.5rem;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #333;
+    }
+    .termo {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .aviso {
+      background: #ffe;
+      padding: 1rem;
+      border-left: 4px solid #fa0;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Denúncias Anônimas</h1>
+    <p><em>Em parceria com o Departamento de Crimes Cibernéticos</em></p>
+  </header>  <div class="aviso">
+    ⚠️ Todas as denúncias são confidenciais. Envie apenas se estiver em ambiente seguro. Seu IP pode estar sendo monitorado por terceiros.
+  </div>  <form action="https://formsubmit.co/SEU_EMAIL@jsmail.io" method="POST">
+    <label for="nome">Nome (opcional)</label>
+    <input type="text" name="nome" id="nome" placeholder="Anônimo"><label for="tipo">Tipo de Incidente</label>
+<select name="tipo" id="tipo" required>
+  <option value="">Selecione</option>
+  <option>Hackeamento</option>
+  <option>Vazamento de dados</option>
+  <option>Assédio virtual</option>
+  <option>Escuta digital</option>
+  <option>Outros</option>
+</select>
+
+<label for="mensagem">Mensagem</label>
+<textarea name="mensagem" id="mensagem" rows="6" placeholder="Descreva com o máximo de detalhes..." required></textarea>
+
+<label class="termo">
+  <input type="checkbox" name="termo" required>
+  Reconheço que posso estar sendo vigiado e assumo os riscos.
+</label>
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://seudominio.com/obrigado.html">
+
+<button type="submit">Enviar denúncia</button>
+
+  </form>
+</body>
+</html>

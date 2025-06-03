@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Missão 1 - Membrana</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f8f8f8;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      color: #00ffae;
+      text-transform: uppercase;
+    }
+    .missao {
+      background: #1a1a1a;
+      border: 2px dashed #00ffae;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+    .terminal {
+      background: #000;
+      color: #0f0;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      white-space: pre-line;
+    }
+    button {
+      background: #00ffae;
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #00d99b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Missão 1: A Escuta</h1>
+    <p><strong>Agente:</strong> <span id="nomeAgente">...</span></p>
+  </header>
+
+  <section class="missao">
+    <p>Interceptamos uma transmissão vinda do servidor abandonado da E.G.O. Technologies.</p>
+    <p>Seu objetivo é analisar os dados criptografados e identificar o padrão escondido.</p>
+
+    <div class="terminal" id="terminal">
+[LOG DE ÁUDIO ENCONTRADO]
+
+> "...eles estão ouvindo... 01101001 01101110 01110100 01100101 01110010 01100110 01100101 01110010 ..."
+    </div>
+
+    <p><strong>Pergunta:</strong> O que a sequência binária quer dizer?</p>
+    <input type="text" id="resposta" placeholder="Digite sua resposta" />
+    <br>
+    <button onclick="verificarResposta()">Verificar</button>
+    <p id="feedback"></p>
+  </section>
+
+  <script>
+    const nome = localStorage.getItem("nomeUsuario") || "Agente Anônimo";
+    document.getElementById("nomeAgente").textContent = nome;
+
+    function verificarResposta() {
+      const resposta = document.getElementById("resposta").value.toLowerCase().trim();
+      const feedback = document.getElementById("feedback");
+
+      if (resposta === "interfer") {
+        feedback.innerHTML = "✅ Missão concluída com sucesso! Código aceito.";
+        feedback.style.color = "#00ffae";
+        localStorage.setItem("missao1_concluida", "true");
+      } else {
+        feedback.innerHTML = "❌ Resposta incorreta. Tente novamente.";
+        feedback.style.color = "#ff4444";
+      }
+    }
+  </script>
+  <script>
+  // Salva o progresso da missão e recompensa
+  localStorage.setItem("missao1", "completa");
+  localStorage.setItem("fragmento1", "true");
+</script>
+
+<a href="painel.html" style="display:block;text-align:center;margin-top:2rem;">
+  🔍 Ir para o Painel do Jogador
+</a>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FloripaLive - URGENTE</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #111;
+      color: #f00;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { background-color: #111; }
+      to { background-color: #220000; }
+    }
+
+    .breaking {
+      background-color: #f00;
+      color: #fff;
+      padding: 0.5rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      animation: glitchText 0.3s infinite alternate;
+    }
+
+    @keyframes glitchText {
+      0% { text-shadow: 1px 0 red, -1px 0 cyan; }
+      100% { text-shadow: -1px 0 red, 1px 0 cyan; }
+    }
+
+    .fake-news {
+      margin-top: 2rem;
+      padding: 1rem;
+      border: 2px dashed #f00;
+      background: rgba(0, 0, 0, 0.3);
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .glitch-text {
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px red, -1px -1px cyan;
+    }
+  </style>
+</head>
+<body>
+  <div class="breaking">[ FLORIPALIVE ] ALERTA: DADOS CORROMPIDOS</div>
+
+  <section class="fake-news">
+    <h2 class="glitch-text">Novo surto de inteligência sintética atinge a Ilha</h2>
+    <p>
+      Especialistas dizem que "não há nada com o que se preocupar", mesmo após
+      17 desaparecimentos em bairros conectados por redes públicas de Wi-Fi.
+    </p>
+  </section>
+
+  <section class="fake-news">
+    <h2 class="glitch-text">Atualização do clima: céu limpo, sem interferências</h2>
+    <p>
+      Imagens mostram distorções estranhas na atmosfera sobre a Lagoa da Conceição.
+      Meteorologistas afirmam que “as câmeras estão erradas, não o clima”.
+    </p>
+  </section>
+
+  <section class="fake-news">
+    <h2 class="glitch-text">IA negacionista assume rede de notícias locais</h2>
+    <p>
+      A nova IA de automação de conteúdo, contratada por cortes de orçamento,
+      começa a publicar mensagens contraditórias e profecias falsas.
+    </p>
+  </section>
+
+  <script>
+    // Adiciona interferência visual com texto corrompido aleatório
+    setInterval(() => {
+      const noises = ["█▒░▓", "ERROR_404", "ΔΣΨ", "???", "<glitch>"];
+      const glitch = document.createElement('div');
+      glitch.textContent = noises[Math.floor(Math.random() * noises.length)];
+      glitch.className = 'glitch-text';
+      glitch.style.position = 'absolute';
+      glitch.style.top = Math.random() * window.innerHeight + 'px';
+      glitch.style.left = Math.random() * window.innerWidth + 'px';
+      glitch.style.pointerEvents = 'none';
+      document.body.appendChild(glitch);
+      setTimeout(() => glitch.remove(), 1000);
+    }, 600);
+  </script>
+</body>
+</html>

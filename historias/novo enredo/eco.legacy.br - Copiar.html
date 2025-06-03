@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>E.G.O. Technologies // echo.legacy.br</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #33ff33;
+      font-family: monospace;
+      padding: 2rem;
+    }h1 {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.terminal {
+  background-color: #111;
+  border: 1px solid #0f0;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.file {
+  color: #0ff;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.glitched {
+  color: red;
+  text-shadow: 1px 0 red, -1px 0 cyan;
+}
+
+  </style>
+</head>
+<body>
+  <h1>E.G.O. Technologies FTP (echo.legacy.br)</h1>
+  <p>[ Diretório: /public_logs/QSR-0/códigos_arquivados ]</p>  <div class="terminal">
+    <span class="file">relatorio-final_qsr0.pdf</span>
+    <span class="file">diario-tecnico_geral.txt</span>
+    <span class="file">echo_controle_v3.docx</span>
+    <span class="file glitched">∞_fragmento_mãe.sys</span>
+    <span class="file">log_recrutas[acesso restrito].txt</span>
+    <span class="file">senha_para_paranoicos.txt</span>
+  </div>  <script>
+    const arquivos = document.querySelectorAll('.file');
+    arquivos.forEach(file => {
+      file.addEventListener('click', () => {
+        if (file.textContent.includes("paranoicos")) {
+          window.location.href = "paranoicos.html";
+        } else if (file.classList.contains("glitched")) {
+          alert("Erro ao acessar fragmento_mãe.sys\n[ Integridade comprometida — reiniciando memória temporária... ]");
+        } else {
+          alert("Download simulado: " + file.textContent);
+        }
+      });
+    });
+  </script></body>
+</html>

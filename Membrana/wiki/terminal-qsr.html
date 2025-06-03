@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal QSR</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 1rem;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    #terminal {
+      flex-grow: 1;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      border: 2px solid #0ff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #0ff3;
+      background-color: #111;
+    }
+    #input-line {
+      display: flex;
+      margin-top: 1rem;
+      border: 1px solid #0ff;
+      border-radius: 5px;
+      padding: 0.5rem;
+      background-color: #111;
+      box-shadow: 0 0 10px #0ff4;
+    }
+    #prompt {
+      color: #0ff;
+      margin-right: 0.5rem;
+    }
+    #cmdInput {
+      background: none;
+      border: none;
+      color: #0f0;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      flex: 1;
+    }
+    .response {
+      margin-left: 1rem;
+    }
+    .initial-msg {
+      color: #0ff;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .alert {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border: 2px solid red;
+      color: red;
+      background-color: #200;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 5px;
+      box-shadow: 0 0 10px red;
+    }
+    .alert a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="initial-msg">Sistema QSR carregado. Digite <strong>help</strong> para instruções.</div>
+  <div id="terminal"></div>
+  <div id="input-line">
+    <span id="prompt">&gt;</span>
+    <input type="text" id="cmdInput" autofocus />
+  </div>  <div class="alert">
+    ⚠️ Acesso SIGMA-13 restrito. <a href="sigma-13.html">Clique aqui se for operador autorizado</a>
+  </div>  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('cmdInput');
+
+    const responses = {
+      "help": "Comandos disponíveis:\n- help\n- enigma 1\n- enigma 2\n- enigma 3\n- curiosidade\n- clear",
+      "enigma 1": "Enigma 1: O pulso 313 codifica frequências não-lineares em padrões visuais. Repare nas piscadas do vídeo.",
+      "enigma 2": "Enigma 2: 3.13Hz é uma frequência cerebral associada a estados de sono REM profundo. Coincidência?",
+      "enigma 3": "Enigma 3: O nome Elias aparece 313 vezes no banco de dados corrompido da repost.ai.",
+      "curiosidade": "Curiosidade científica: O número 313 é primo palíndromo. Em criptografia, primos são a base de quase tudo.",
+      "clear": "__CLEAR__"
+    };
+
+    function printResponse(text) {
+      if (text === "__CLEAR__") {
+        terminal.innerHTML = '';
+        return;
+      }
+      const div = document.createElement('div');
+      div.className = 'response';
+      div.textContent = text;
+      terminal.appendChild(div);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim().toLowerCase();
+        const userLine = document.createElement('div');
+        userLine.textContent = '> ' + cmd;
+        terminal.appendChild(userLine);
+
+        if (responses[cmd]) {
+          printResponse(responses[cmd]);
+        } else {
+          printResponse('Comando não reconhecido. Digite "help" para ajuda.');
+        }
+
+        input.value = '';
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    });
+  </script></body>
+</html>
