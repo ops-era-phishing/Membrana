@@ -67,6 +67,6 @@ refreshBtn.addEventListener('click', () => {
   }
 });
 setTimeout(() => {
-  window.location.href = 'motherwawe.html';
+  window.location.href = 'motherwave.html';
 }, 10000);
 
