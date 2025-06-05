@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunicado Oficial - Fórum Civil Exilado</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #f2f2f2;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      padding: 1.5em;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #ff0040;
+      text-shadow: 0 0 6px #ff004080;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+    }
+
+    p, ul {
+      margin-bottom: 1.2rem;
+    }
+
+    .screenshot {
+      margin: 2em 0;
+      border: 2px dashed #444;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .screenshot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .deep-btn {
+      display: block;
+      margin: 2em 0;
+      padding: 1em;
+      background: #1a1a1a;
+      border: 2px solid #ff0040;
+      color: #ff0040;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .deep-btn:hover {
+      background: #ff0040;
+      color: #000;
+      transform: scale(1.03);
+    }
+
+    ul {
+      list-style-type: '🡒 ';
+      padding-left: 1.5em;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #999;
+      margin-top: 2em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #555;
+      margin-top: 2em;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 1.1rem;
+        padding: 1em;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .deep-btn {
+        font-size: 1rem;
+        padding: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>[COMUNICADO OFICIAL]</h1>
+    <p>
+      O <strong>Fórum Civil da Nova Consciência</strong> foi oficialmente <em>banido do Reddit</em>.  
+      Nossas denúncias sobre as operações secretas da <strong>EĜO Technologies</strong>, o projeto QSR-0 e os desaparecimentos na rede <em>não passaram despercebidos</em>.  
+      Fomos silenciados. Eles venceram... por enquanto.
+    </p>
+
+    <p>
+      Mas como toda boa rebelião: <strong>nos adaptamos, migramos, resistimos</strong>.  
+      A verdade não será deletada. O backup vive.
+    </p>
+
+    <div class="screenshot">
+      <p>[Imagem do banimento do Reddit]</p>
+      <img src="screenshot-do-reddit.jpeg" alt="Banimento Reddit">
+    </div>
+
+    <h2>Nosso novo refúgio (temporário):</h2>
+    <a class="deep-btn" href="forum.html" target="_blank">Acessar fórum alternativo</a>
+
+    <h2>Segurança primeiro:</h2>
+    <p>
+      Toda comunicação agora será feita via <strong>Signal</strong>.  
+      <em>Nunca mais confie em mensagens abertas ou aplicativos convencionais.</em>  
+      Faça o download do app e envie sua palavra-chave para nosso gerente geral:
+    </p>
+    <ul>
+      <li>📥 <a href="https://signal.org/download/" target="_blank" style="color: #5ad;">Baixar Signal</a></li>
+      <li>📱 Número do gerente: <strong>+55 48 98844-7566</strong></li>
+    </ul>
+
+    <p class="note">
+      O uso de criptografia de ponta-a-ponta é obrigatório para manter a integridade do grupo.  
+      Aqueles que forem rastreados não serão protegidos.  
+      Nos vemos do outro lado da membrana.
+    </p>
+
+    <hr>
+    <p class="note">
+      Mensagem interceptada e retransmitida por: <strong>[Identidade em verificação]</strong><br>
+      ⏳ Última atualização: <span id="data"></span>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("data").textContent = new Date().toLocaleString();
+  </script>
+</body>
+</html>
+

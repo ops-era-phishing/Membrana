@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comunicado: Dissidentes com Perfil Empático – Nível 2</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d0d0d 0%, #121212 100%);
+      color: #00ff99;
+      font-family: 'Roboto Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      user-select: none;
+    }
+
+    .container {
+      max-width: 700px;
+      background: #111;
+      border: 2px solid #00ff99;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ff99cc;
+      padding: 2rem 3rem;
+      filter: drop-shadow(0 0 6px #00ff99);
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px #00ff99cc; }
+      50% { box-shadow: 0 0 30px #00ffaaee; }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #00ff99;
+      padding-bottom: 0.5rem;
+      user-select: text;
+    }
+
+    p.description {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #55ffaa;
+      font-style: italic;
+      user-select: text;
+    }
+
+    ul.list {
+      list-style: none;
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 10px;
+      border-top: 1px solid #00ff99;
+      border-bottom: 1px solid #00ff99;
+      user-select: text;
+    }
+
+    ul.list::-webkit-scrollbar {
+      width: 8px;
+    }
+    ul.list::-webkit-scrollbar-thumb {
+      background: #00ff99aa;
+      border-radius: 4px;
+    }
+    ul.list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ul.list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #004d33;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      cursor: default;
+      transition: color 0.3s ease;
+    }
+
+    ul.list li:last-child {
+      border-bottom: none;
+    }
+
+    ul.list li:hover {
+      color: #ff3366;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #008844bb;
+      font-style: italic;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      ul.list li {
+        font-size: 1rem;
+      }
+      p.description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-label="Comunicado de Dissidentes">
+    <h1>Comunicado: Dissidentes <br />Perfil Empático – Nível 2</h1>
+    <p class="description">
+      Lista de perfis “perigosos” com nomes de personagens/jogadores suspeitos.<br/>
+      Você está sendo monitorado.
+    </p>
+
+    <ul class="list" aria-label="Lista de perfis suspeitos">
+      <li>Lucas Altieri</li>
+      <li>Renata Velasco</li>
+      <li>Geraldo Turing</li>
+      <li>Sophia Marlowe</li>
+      <li>Álvaro Costa</li>
+      <li>Isabela Cruz</li>
+      <li>Matheus Sakamoto</li>
+      <li>Clara Vasques</li>
+      <li>João Nakamura</li>
+      <li>Beatriz Mendonça</li>
+      <li>Kenner Enrique</li>
+    </ul>
+
+    <footer>
+      © E.G.O. Technologies — Área de Controle Neuroético<br />
+      Documentos classificados — Para uso restrito
+    </footer>
+  </main>
+</body>
+</html>
+

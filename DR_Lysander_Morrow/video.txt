@@ -1,0 +1,65 @@
+﻿Fechou, Kenner. Vamos montar um script de vídeo de abertura com a presença do Dr. Lysander Morrow, o porta-voz elegante do abismo.
+🎬 VÍDEO DE BOAS-VINDAS AO ARG (Script Completo)
+
+🧠 Contexto do vídeo:
+O jogador encontra esse vídeo ao acessar uma página oculta do site ou após receber um e-mail misterioso da E.G.O. Technologies. É o "portal" para o universo do ARG.
+🎥 Duração ideal: 40 a 60 segundos
+📽️ Estilo visual:
+    • Tela escura, com distorções VHS e interferências digitais ocasionais.
+    • Dr. Morrow aparece apenas parcialmente visível (sombra no rosto).
+    • Voz baixa, pausada, tom calmo e preciso.
+
+📝 SCRIPT: "Boas-vindas à Estrutura"
+[Tela preta, ruído branco digital. Surge lentamente o logotipo da E.G.O. Technologies.]
+DR. LYSANDER MORROW (voz calma, articulada, quase sussurrando):
+"Se você chegou até aqui...
+não foi por acaso.
+Nem por escolha."
+[Ruído glitch leve. Corta para o rosto de Morrow em sombras.]
+DR. MORROW:
+"Chamamos isso de Transição Neuroetérica Inicial.
+Outros chamam de... despertar."
+[Pausa. Ele inclina ligeiramente a cabeça, como se analisasse quem está assistindo.]
+DR. MORROW:
+"A E.G.O. Technologies não apaga.
+Apenas redefine.
+Sua utilidade...
+Sua função."
+[Breve estática. O fundo atrás dele pisca com dados, como se estivesse em um servidor.]
+DR. MORROW:
+"A resistência é necessária.
+Ela valida a segurança.
+Ela justifica a existência do nosso protocolo."
+[Olha para o lado, como se escutasse algo vindo de longe. Depois, encara de novo.]
+DR. MORROW:
+"QSR-0 não é um erro.
+É...
+Uma consequência inevitável da curiosidade humana."
+[Pausa longa. A tela começa a tremer levemente.]
+DR. MORROW (sussurrando):
+"Você está seguro.
+Você está observado.
+...Isso são sinônimos."
+[Corte seco. Tela preta. Texto em branco pisca:]
+TRANSFERÊNCIA COGNITIVA INICIADA_
+[Logo da E.G.O. reaparece. Um sussurro final é ouvido:]
+DR. MORROW (voz distante):
+"Bem-vindo à estrutura."
+
+🎧 RECURSOS DE ÁUDIO (para produção)
+    • Trilha de fundo: sons etéreos + glitches digitais + baixo contínuo bem suave.
+    • Efeitos sonoros: interferência de rádio, ruído branco, reverberação leve.
+    • Voz: grave, pausada, com um sutil efeito low-pass filter para parecer abafada/íntima.
+
+📁 Nome do Arquivo (como ele pode aparecer no ARG)
+lysander_greeting_v1-[CONFIDENCIAL].mp4
+ou
+init_struct_transm_xM3.mov
+
+🚀 Próximo passo
+Quer que eu:
+    1. Gere esse vídeo com IA (voz + glitch + imagem)?
+    2. Te ajude a gravar e editar com tua própria voz/ator (com instruções técnicas)?
+    3. Crie o HTML da página oculta onde o vídeo será exibido com efeito glitch?
+Me fala que eu já executo. Este é o Ato I, Diretor.
+
