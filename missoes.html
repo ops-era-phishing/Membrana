@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEMBRANA: Nexus Psico-Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue: #00f3ff;
+      --neon-pink: #ff00aa;
+      --neon-purple: #aa00ff;
+      --matrix-green: #00ff88;
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --panel-bg: rgba(15, 15, 25, 0.8);
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--neon-blue);
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 30%, var(--neon-purple) 0%, transparent 15%),
+        radial-gradient(circle at 80% 70%, var(--neon-pink) 0%, transparent 15%),
+        linear-gradient(to bottom, var(--darker-bg), var(--dark-bg));
+      min-height: 100vh;
+    }
+
+    #nexus-container {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .main-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      margin: 0;
+      color: var(--matrix-green);
+      text-shadow: 0 0 15px var(--matrix-green);
+      letter-spacing: 0.3rem;
+      position: relative;
+      animation: glitch 5s infinite alternate;
+    }
+
+    @keyframes glitch {
+      0%, 100% { text-shadow: 0 0 15px var(--matrix-green); }
+      25% { text-shadow: -5px -5px 15px var(--neon-pink), 5px 5px 15px var(--neon-blue); }
+      50% { text-shadow: 0 0 20px var(--neon-purple), 0 0 30px var(--neon-blue); }
+      75% { text-shadow: -10px 0 15px var(--neon-pink), 10px 0 15px var(--neon-blue); }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--neon-blue);
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .hud {
+      display: flex;
+      justify-content: space-between;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--neon-blue);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 0 30px var(--neon-blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hud::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        transparent 65%,
+        var(--neon-blue) 75%,
+        transparent 85%
+      );
+      background-size: 300% 300%;
+      animation: scan 8s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes scan {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .hud-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hud-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--matrix-green);
+      text-shadow: 0 0 10px currentColor;
+      margin-bottom: 0.5rem;
+    }
+
+    .hud-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--neon-blue);
+      opacity: 0.7;
+    }
+
+    #missions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .mission-card {
+      background: var(--panel-bg);
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--neon-blue);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px var(--neon-blue);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(0, 255, 200, 0.05) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 30px var(--neon-blue);
+    }
+
+    .mission-card.locked {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 20px var(--neon-pink);
+      opacity: 0.6;
+    }
+
+    .mission-card.completed {
+      border-color: var(--matrix-green);
+      box-shadow: 0 0 20px var(--matrix-green);
+    }
+
+    .mission-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 0;
+      color: white;
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--neon-blue);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .mission-card .mission-id {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.8rem;
+      color: var(--neon-blue);
+      opacity: 0.7;
+    }
+
+    .mission-card .mission-desc {
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .mission-card .mission-reward {
+      font-size: 0.9rem;
+      color: var(--matrix-green);
+      margin-bottom: 1rem;
+    }
+
+    .mission-card button {
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      color: black;
+      border: none;
+      padding: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .mission-card button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px var(--neon-blue);
+    }
+
+    .mission-card button:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .mission-card.completed button {
+      background: var(--matrix-green);
+      color: black;
+    }
+
+    .terminal {
+      background: rgba(0, 10, 20, 0.8);
+      border: 1px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .terminal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        rgba(0, 255, 200, 0.05) 0%,
+        transparent 10%
+      );
+      pointer-events: none;
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: var(--neon-pink);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .terminal-content {
+      min-height: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--neon-blue) transparent;
+    }
+
+    .terminal-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .terminal-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .terminal-content::-webkit-scrollbar-thumb {
+      background-color: var(--neon-blue);
+      border-radius: 3px;
+    }
+
+    .terminal-input {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .terminal-prompt {
+      color: var(--matrix-green);
+      margin-right: 0.5rem;
+    }
+
+    .terminal-cmd {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--neon-blue);
+      color: white;
+      font-family: 'Courier New', monospace;
+      flex-grow: 1;
+      padding: 0.3rem;
+    }
+
+    .terminal-cmd:focus {
+      outline: none;
+      border-bottom-color: var(--matrix-green);
+    }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid var(--neon-pink);
+      color: var(--neon-pink);
+      padding: 0.8rem 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 3rem;
+      transition: all 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .reset-btn:hover {
+      background: rgba(255, 0, 170, 0.1);
+      box-shadow: 0 0 15px var(--neon-pink);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--neon-blue);
+      opacity: 0.6;
+    }
+
+    /* Efeitos especiais */
+    .particle {
+      position: absolute;
+      background: var(--neon-blue);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .main-wrapper {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      #missions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="nexus-container"></div>
+  
+  <div class="main-wrapper">
+    <header>
+      <h1>MEMBRANA</h1>
+      <p class="subtitle">Nexus Psico-Digital v2.3.7</p>
+    </header>
+
+    <div class="hud">
+      <div class="hud-item">
+        <div class="hud-value" id="xp">0</div>
+        <div class="hud-label">Pontos Neuro</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-value" id="level">1</div>
+        <div class="hud-label">Nível Cognitivo</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-value" id="missions-completed">0</div>
+        <div class="hud-label">Protocolos Quebrados</div>
+      </div>
+    </div>
+
+    <div id="missions-grid">
+      <!-- Missões serão inseridas aqui via JavaScript -->
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <span>TERMINAL E.G.O. v9.4.2</span>
+        <span>CONEXÃO: <span id="connection-status">ESTÁVEL</span></span>
+      </div>
+      <div class="terminal-content" id="terminal-output">
+        <p>> Inicializando protocolo MEMBRANA...</p>
+        <p>> Conexão estabelecida com servidor neural</p>
+        <p>> Bem-vindo, agente. Seu nível atual: <span class="neon-text">1</span></p>
+        <p>> Carregando missões primárias...</p>
+      </div>
+      <div class="terminal-input">
+        <span class="terminal-prompt">></span>
+        <input type="text" class="terminal-cmd" id="terminal-input" placeholder="Digite comandos aqui...">
+      </div>
+    </div>
+
+    <button class="reset-btn" id="reset-btn">REINICIAR SIMULAÇÃO</button>
+
+    <footer>
+      <p>Sistema MEMBRANA © 2023 — ops, era phishing™</p>
+      <p>Conexão neural: <span id="neuro-sync">87%</span> sincronizada</p>
+    </footer>
+  </div>
+
+  <script>
+    // Configuração inicial
+    const gameState = {
+      xp: 0,
+      level: 1,
+      completedMissions: [],
+      unlockedMissions: [1],
+      terminalHistory: [],
+      neuroSync: 87
+    };
+
+    // Missões do jogo
+    const missions = [
+      {
+        id: 1,
+        title: "INICIAÇÃO NEURAL",
+        description: "Complete o protocolo de sincronização cerebral para acessar o sistema.",
+        reward: 100,
+        completed: false,
+        locked: false,
+        puzzle: {
+          type: "code",
+          solution: "MEMBRANA228",
+          hint: "O código está no título da página"
+        }
+      },
+      {
+        id: 2,
+        title: "DECODIFICAÇÃO HEX",
+        description: "Decifre a mensagem codificada em hexadecimal encontrada nos servidores do Portal Floripa.",
+        reward: 150,
+        completed: false,
+        locked: true,
+        requiresLevel: 2,
+        puzzle: {
+          type: "hex",
+          solution: "4D454D4252414E41",
+          hint: "Converta para ASCII"
+        }
+      },
+      {
+        id: 3,
+        title: "ESPECTRO SONORO",
+        description: "Analise o arquivo de áudio e extraia a mensagem oculta no espectrograma.",
+        reward: 200,
+        completed: false,
+        locked: true,
+        requiresLevel: 3,
+        puzzle: {
+          type: "audio",
+          solution: "QSR-0-ACTIVE",
+          hint: "Use um visualizador de espectrograma"
+        }
+      },
+      {
+        id: 4,
+        title: "INTRUSÃO DIGITAL",
+        description: "Acesse o sistema interno do Portal Floripa usando as credenciais obtidas.",
+        reward: 300,
+        completed: false,
+        locked: true,
+        requiresLevel: 4,
+        puzzle: {
+          type: "terminal",
+          solution: "ssh floripa@192.168.7.228",
+          hint: "Use o comando SSH"
+        }
+      },
+      {
+        id: 5,
+        title: "MEMBRANA INSTÁVEL",
+        description: "Estabilize os pontos de conexão interdimensional antes que colapsem.",
+        reward: 500,
+        completed: false,
+        locked: true,
+        requiresLevel: 5,
+        puzzle: {
+          type: "sequence",
+          solution: "↑↑↓↓←→←→BA",
+          hint: "Padrão Konami modificado"
+        }
+      }
+    ];
+
+    // Elementos DOM
+    const DOM = {
+      xp: document.getElementById('xp'),
+      level: document.getElementById('level'),
+      missionsCompleted: document.getElementById('missions-completed'),
+      missionsGrid: document.getElementById('missions-grid'),
+      terminalOutput: document.getElementById('terminal-output'),
+      terminalInput: document.getElementById('terminal-input'),
+      resetBtn: document.getElementById('reset-btn'),
+      connectionStatus: document.getElementById('connection-status'),
+      neuroSync: document.getElementById('neuro-sync')
+    };
+
+    // Inicialização do jogo
+    function initGame() {
+      loadProgress();
+      renderMissions();
+      updateHUD();
+      initTerminal();
+      createParticles();
+      startNeuroSync();
+    }
+
+    // Carrega o progresso do localStorage
+    function loadProgress() {
+      const savedData = localStorage.getItem('membranaProgress');
+      if (savedData) {
+        Object.assign(gameState, JSON.parse(savedData));
+      }
+    }
+
+    // Salva o progresso no localStorage
+    function saveProgress() {
+      localStorage.setItem('membranaProgress', JSON.stringify(gameState));
+    }
+
+    // Renderiza as missões na tela
+    function renderMissions() {
+      DOM.missionsGrid.innerHTML = '';
+      
+      missions.forEach(mission => {
+        const missionEl = document.createElement('div');
+        missionEl.className = `mission-card ${mission.completed ? 'completed' : mission.locked ? 'locked' : ''}`;
+        
+        missionEl.innerHTML = `
+          <span class="mission-id">#${mission.id.toString().padStart(3, '0')}</span>
+          <h3>${mission.title}</h3>
+          <p class="mission-desc">${mission.description}</p>
+          <p class="mission-reward">RECOMPENSA: ${mission.reward} NP</p>
+          <button 
+            id="mission-btn-${mission.id}" 
+            ${mission.completed ? 'disabled' : mission.locked ? 'disabled' : ''}
+          >
+            ${mission.completed ? 'COMPLETO' : mission.locked ? 'BLOQUEADO' : 'INICIAR'}
+          </button>
+        `;
+        
+        if (!mission.locked && !mission.completed) {
+          missionEl.querySelector('button').addEventListener('click', () => startMission(mission.id));
+        }
+        
+        DOM.missionsGrid.appendChild(missionEl);
+      });
+    }
+
+    // Inicia uma missão
+    function startMission(missionId) {
+      const mission = missions.find(m => m.id === missionId);
+      if (!mission || mission.completed || mission.locked) return;
+      
+      addToTerminal(`> Iniciando protocolo ${mission.title}...`);
+      addToTerminal(`> ${mission.description}`);
+      
+      switch (mission.puzzle.type) {
+        case 'code':
+          addToTerminal('> Insira o código de acesso:');
+          DOM.terminalInput.placeholder = "Digite o código...";
+          break;
+        case 'hex':
+          addToTerminal('> Mensagem codificada: 4D 45 4D 42 52 41 4E 41');
+          addToTerminal('> Converta para texto ASCII:');
+          DOM.terminalInput.placeholder = "Digite a mensagem decodificada...";
+          break;
+        case 'audio':
+          addToTerminal('> Analisando espectrograma... (arquivo: spectro.mp3)');
+          addToTerminal('> Extraia a mensagem oculta:');
+          DOM.terminalInput.placeholder = "Digite a mensagem encontrada...";
+          break;
+        case 'terminal':
+          addToTerminal('> Acessando terminal seguro...');
+          addToTerminal('> Use o comando correto para invadir o sistema:');
+          DOM.terminalInput.placeholder = "Digite o comando...";
+          break;
+        case 'sequence':
+          addToTerminal('> Estabilize a Membrana inserindo a sequência correta:');
+          DOM.terminalInput.placeholder = "Digite a sequência...";
+          break;
+      }
+      
+      // Foca no input do terminal
+      DOM.terminalInput.focus();
+      
+      // Armazena a missão atual
+      gameState.currentMission = missionId;
+    }
+
+    // Completa uma missão
+    function completeMission(missionId) {
+      const mission = missions.find(m => m.id === missionId);
+      if (!mission || mission.completed) return;
+      
+      mission.completed = true;
+      gameState.completedMissions.push(missionId);
+      gameState.xp += mission.reward;
+      
+      // Verifica se novas missões devem ser desbloqueadas
+      checkUnlockedMissions();
+      
+      // Atualiza a UI
+      updateHUD();
+      renderMissions();
+      saveProgress();
+      
+      // Feedback no terminal
+      addToTerminal(`> Protocolo ${mission.title} concluído com sucesso!`);
+      addToTerminal(`> +${mission.reward} Pontos Neuro adquiridos.`);
+      
+      // Verifica se subiu de nível
+      checkLevelUp();
+    }
+
+    // Verifica se subiu de nível
+    function checkLevelUp() {
+      const levels = [
+        { xp: 0, level: 1 },
+        { xp: 200, level: 2 },
+        { xp: 500, level: 3 },
+        { xp: 1000, level: 4 },
+        { xp: 2000, level: 5 }
+      ];
+      
+      const newLevel = levels.reduce((maxLevel, threshold) => {
+        return gameState.xp >= threshold.xp ? threshold.level : maxLevel;
+      }, 1);
+      
+      if (newLevel > gameState.level) {
+        gameState.level = newLevel;
+        addToTerminal(`> Nível cognitivo aumentado para ${newLevel}!`);
+        addToTerminal(`> Novos protocolos disponíveis.`);
+        updateHUD();
+        checkUnlockedMissions();
+      }
+    }
+
+    // Verifica missões desbloqueadas
+    function checkUnlockedMissions() {
+      missions.forEach(mission => {
+        if (!mission.locked) return;
+        
+        // Desbloqueia por nível
+        if (mission.requiresLevel && mission.requiresLevel <= gameState.level) {
+          mission.locked = false;
+          if (!gameState.unlockedMissions.includes(mission.id)) {
+            gameState.unlockedMissions.push(mission.id);
+            addToTerminal(`> Novo protocolo disponível: ${mission.title}`);
+          }
+        }
+        
+        // Desbloqueia por dependência (opcional)
+        // if (mission.requiresMission && gameState.completedMissions.includes(mission.requiresMission)) {
+        //   mission.locked = false;
+        // }
+      });
+    }
+
+    // Atualiza o HUD
+    function updateHUD() {
+      DOM.xp.textContent = gameState.xp;
+      DOM.level.textContent = gameState.level;
+      DOM.missionsCompleted.textContent = gameState.completedMissions.length;
+      DOM.neuroSync.textContent = `${gameState.neuroSync}%`;
+    }
+
+    // Terminal interativo
+    function initTerminal() {
+      DOM.terminalInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const command = DOM.terminalInput.value.trim();
+          if (command) {
+            processCommand(command);
+            DOM.terminalInput.value = '';
+          }
+        }
+      });
+    }
+
+    // Processa comandos do terminal
+    function processCommand(command) {
+      addToTerminal(`> ${command}`);
+      
+      // Verifica se há uma missão ativa
+      if (gameState.currentMission) {
+        const mission = missions.find(m => m.id === gameState.currentMission);
+        if (mission && !mission.completed) {
+          if (command.toUpperCase() === mission.puzzle.solution) {
+            addToTerminal('> Resposta correta! Processando...');
+            setTimeout(() => completeMission(mission.id), 1000);
+          } else {
+            addToTerminal('> Resposta incorreta. Dica: ' + mission.puzzle.hint);
+          }
+          return;
+        }
+      }
+      
+      // Comandos gerais
+      switch (command.toLowerCase()) {
+        case 'ajuda':
+          addToTerminal('> Comandos disponíveis:');
+          addToTerminal('> - "missoes": Lista de protocolos');
+          addToTerminal('> - "nivel": Mostra seu nível atual');
+          addToTerminal('> - "reset": Reinicia a simulação');
+          break;
+        case 'missoes':
+          addToTerminal('> Protocolos disponíveis:');
+          missions.filter(m => !m.locked).forEach(m => {
+            addToTerminal(`> #${m.id}: ${m.title} - ${m.completed ? 'COMPLETO' : 'DISPONÍVEL'}`);
+          });
+          break;
+        case 'nivel':
+          addToTerminal(`> Nível Cognitivo: ${gameState.level}`);
+          addToTerminal(`> Pontos Neuro: ${gameState.xp}`);
+          break;
+        case 'reset':
+          resetGame();
+          break;
+        default:
+          addToTerminal('> Comando não reconhecido. Digite "ajuda" para opções.');
+      }
+    }
+
+    // Adiciona texto ao terminal
+    function addToTerminal(text) {
+      const line = document.createElement('p');
+      line.textContent = text;
+      DOM.terminalOutput.appendChild(line);
+      DOM.terminalOutput.scrollTop = DOM.terminalOutput.scrollHeight;
+    }
+
+    // Reinicia o jogo
+    function resetGame() {
+      if (confirm('Tem certeza que deseja reiniciar toda a simulação? Todo o progresso será perdido.')) {
+        localStorage.removeItem('membranaProgress');
+        window.location.reload();
+      }
+    }
+
+    // Efeitos visuais - partículas
+    function createParticles() {
+      const container = document.getElementById('nexus-container');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Posição aleatória
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        // Tamanho aleatório
+        const size = Math.random() * 3 + 1;
+        
+        // Cor aleatória
+        const colors = ['var(--neon-blue)', 'var(--neon-pink)', 'var(--neon-purple)', 'var(--matrix-green)'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Aplica estilos
+        particle.style.left = `${x}%`;
+        particle.style.top = `${y}%`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        // Animação
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * -20;
+        particle.style.animation = `float ${duration}s ${delay}s infinite`;
+        
+        container.appendChild(particle);
+      }
+    }
+
+    // Efeito de sincronização neural (aleatório)
+    function startNeuroSync() {
+      setInterval(() => {
+        const variation = Math.random() * 6 - 3; // -3 a +3
+        gameState.neuroSync = Math.min(100, Math.max(0, gameState.neuroSync + variation));
+        DOM.neuroSync.textContent = `${Math.round(gameState.neuroSync)}%`;
+        
+        // Altera o status da conexão baseado na sincronização
+        if (gameState.neuroSync > 90) {
+          DOM.connectionStatus.textContent = 'ESTÁVEL';
+          DOM.connectionStatus.style.color = 'var(--matrix-green)';
+        } else if (gameState.neuroSync > 70) {
+          DOM.connectionStatus.textContent = 'INSTÁVEL';
+          DOM.connectionStatus.style.color = 'var(--neon-blue)';
+        } else {
+          DOM.connectionStatus.textContent = 'CRÍTICO';
+          DOM.connectionStatus.style.color = 'var(--neon-pink)';
+        }
+      }, 3000);
+    }
+
+    // Inicia o jogo quando o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', initGame);
+  </script>
+</body>
+</html>
