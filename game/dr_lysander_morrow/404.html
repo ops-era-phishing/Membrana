@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Erro 404 - QSR--0</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #00ff99;
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: shake 0.2s infinite;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+      animation: glitchText 3s infinite;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: red;
+      text-shadow: 0 0 5px red;
+      animation: flicker 2s infinite;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: #ccc;
+    }
+
+    .warning {
+      color: #ff00cc;
+      font-weight: bold;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      animation: flicker 1.5s infinite;
+    }
+
+    a.back-btn {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 1rem 2rem;
+      color: #000;
+      background: #00ff99;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00ff99;
+    }
+
+    a.back-btn:hover {
+      background: #fff;
+      color: #111;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.4;
+      }
+    }
+
+    @keyframes glitchText {
+      0% {
+        text-shadow: 2px 0 red, -2px 0 cyan;
+      }
+      20% {
+        text-shadow: -2px 0 red, 2px 0 cyan;
+      }
+      40% {
+        text-shadow: 2px 2px red, -2px -2px cyan;
+      }
+      60% {
+        text-shadow: -1px 1px red, 1px -1px cyan;
+      }
+      80% {
+        text-shadow: 1px -1px red, -1px 1px cyan;
+      }
+      100% {
+        text-shadow: 2px 0 red, -2px 0 cyan;
+      }
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.2rem; }
+      p, .warning { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ERRO 404</h1>
+    <h2>Você se perdeu? QSR--0 ainda está te observando.</h2>
+    <p class="warning">Você não deveria ter clicado em download.<br/>Agora daremos um <code>git clone</code> no seu cérebro…<br/>
+    ou um <code>git pull --rebase</code> caso já tenha se infectado.</p>
+
+    <a class="back-btn" href="/index.html">← Voltar para a Página Segura</a>
+  </div>
+</body>
+</html>
+

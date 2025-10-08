@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>#HASHPHAGE</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 2rem;
+      overflow: hidden;
+    }.tag-glitch {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px dashed #0f0;
+  cursor: pointer;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.corrupted {
+  color: red;
+  font-weight: bold;
+  text-shadow: 1px 0 red, -1px 0 cyan;
+}
+
+audio { display: none; }
+
+  </style>
+</head>
+<body>
+  <h1 class="corrupted">#hashphage</h1>
+  <p>[ tags comprometidas detectadas... clique por sua conta e risco ]</p>  <div id="tags"></div><audio id="glitchSound" src="glitch.mp3" preload="auto"></audio>
+
+  <script>
+    const tags = ["<script>", "<virus>", "<null>`, "<exec>`, "<dream>", "<meta>`, "<core>`, "<404>", "<infekt>", "<echo>", "<çççç>", "<???>"];
+    const tagContainer = document.getElementById("tags");
+    const glitchSound = document.getElementById("glitchSound");
+
+    tags.forEach(tag => {
+      const el = document.createElement("div");
+      el.className = "tag-glitch";
+      el.textContent = tag;
+      el.addEventListener("click", () => {
+        el.classList.add("corrupted");
+        glitchSound.currentTime = 0;
+        glitchSound.play();
+        const span = document.createElement("span");
+        span.innerText = "  — fragmento executado";
+        el.appendChild(span);
+
+        if (tag === "<echo>") {
+          setTimeout(() => {
+            window.location.href = "echo.legacy.br.html";
+          }, 2000);
+        }
+      });
+      tagContainer.appendChild(el);
+    });
+  </script></body>
+</html>
