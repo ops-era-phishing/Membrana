@@ -1,73 +1,275 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MEMBRANA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ARG — Opening</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#000;
+      --muted:#bfbdb8;
+      --accent:#8b0000;
     }
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: radial-gradient(ellipse at center, #000 0%, #111 100%);
-      color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      color:#fff;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      overflow:hidden;
     }
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-      animation: fadeIn 2s ease;
+    .stage{
+      position:fixed;
+      inset:0;
+      display:grid;
+      place-items:center;
     }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #5effd7;
-      text-shadow: 0 0 10px #5effd7aa;
+    .panel{
+      width:90vw;
+      max-width:1200px;
+      height:80vh;
+      max-height:720px;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 30px 80px rgba(0,0,0,0.8);
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #ccc;
-      margin-bottom: 2rem;
+    .center{
+      position:relative;
+      z-index:5;
+      text-align:center;
+      padding:20px;
     }
-    .enter-btn {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      background-color: transparent;
-      color: #5effd7;
-      border: 2px solid #5effd7;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    /* Loading bar */
+    .loader{
+      width:80%;
+      max-width:600px;
+      margin:0 auto;
     }
-    .enter-btn:hover {
-      background-color: #5effd7;
-      color: #000;
+    .bar{
+      height:12px;
+      background:rgba(255,255,255,0.06);
+      border-radius:999px;
+      overflow:hidden;
+      position:relative;
     }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
+    .fill{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--accent),#ff6b6b);
+      border-radius:999px;
+      transition:width 0.6s cubic-bezier(.2,.9,.2,1);
     }
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; }
+    .meta{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--muted);
+      letter-spacing:0.02em;
+    }
+    /* Glitch text */
+    .glitch{
+      font-weight:700;
+      font-size:clamp(18px,4vw,32px);
+      line-height:1.1;
+      text-transform:uppercase;
+      position:relative;
+    }
+    .glitch:before,.glitch:after{
+      content:attr(data-text);
+      position:absolute;
+      left:0;
+      top:0;
+      opacity:0.7;
+    }
+    .glitch:before{
+      transform:translate(2px,-2px);
+      clip-path:inset(0 0 55% 0);
+      opacity:0.8;
+    }
+    .glitch:after{
+      transform:translate(-2px,2px);
+      clip-path:inset(45% 0 0 0);
+      opacity:0.6;
+    }
+    /* Hidden visuals layers */
+    .layer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+    .photos{
+      position:absolute;
+      inset:0;
+      mix-blend-mode:screen;
+      opacity:0.06;
+      filter:blur(2px);
+    }
+    .brain{
+      width:60vmin;
+      height:60vmin;
+      max-width:560px;
+      max-height:560px;
+      margin:0 auto;
+      opacity:0.06;
+      filter:contrast(150%) saturate(40%);
+    }
+    .sr-only{
+      position:absolute!important;
+      height:1px;
+      width:1px;
+      overflow:hidden;
+      clip:rect(1px,1px,1px,1px);
+      white-space:nowrap;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>VOCÊ JÁ ESTÁ DENTRO</h1>
-    <p>Este é o ponto de entrada para um ARG em constante mutação. MEMBRANA não é um jogo — é uma entidade sensorial que vive entre códigos e paranoia.
-    </p>
-    <button class="enter-btn" onclick="location.href='Membrana/main.html'">ENTRAR NA MEMBRANA</button>
+  <div class="stage">
+    <div class="panel" role="main" aria-label="Abertura do ARG">
+      <div class="layer photos" id="photosLayer"></div>
+      <div class="layer brain" id="brainLayer"></div>
+      <div class="center" id="center">
+        <div class="glitch" id="glitchText" data-text="INICIALIZANDO…">INICIALIZANDO…</div>
+        <div class="loader" style="margin-top:18px">
+          <div class="bar" aria-hidden="true">
+            <div class="fill" id="fill"></div>
+          </div>
+          <div class="meta" id="meta">Acessando hardware seguro • 0%</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Audio tag -->
+  <audio id="openingAudio" autoplay playsinline preload="auto" crossorigin="anonymous">
+    <source src="/./opening.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio embutido.
+  </audio>
+
+  <script>
+    const timeline = [0, 6000, 16000, 26000, 36000, 46000, 56000];
+    const redirectAfter = 61000;
+    const fill = document.getElementById('fill');
+    const meta = document.getElementById('meta');
+    const glitch = document.getElementById('glitchText');
+    const photos = document.getElementById('photosLayer');
+    const brain = document.getElementById('brainLayer');
+
+    function seedPhotos(){
+      for(let i=0;i<8;i++){
+        const el = document.createElement('div');
+        el.style.position='absolute';
+        el.style.width = (30+Math.random()*30)+'%';
+        el.style.height = (20+Math.random()*30)+'%';
+        el.style.left = (Math.random()*80)+'%';
+        el.style.top = (Math.random()*80)+'%';
+        el.style.background = 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12), rgba(255,0,0,0.02))';
+        el.style.transform = 'translate(-50%,-50%) rotate('+ (Math.random()*30-15) +'deg)';
+        el.style.filter = 'blur(6px)';
+        photos.appendChild(el);
+      }
+    }
+
+    function seedBrain(){
+      const svg = `<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><g stroke="rgba(200,0,0,0.9)" stroke-width="2" fill="none">`+
+        Array.from({length:18}).map((_,i)=>`<path d="M${50+i*25},${300+Math.sin(i)*30} C ${200+i*5},${50+i*10} ${400-i*7},${520-i*9} 550,${300-i*3}" />`).join('')+
+        `</g></svg>`;
+      brain.innerHTML = svg;
+    }
+
+    seedPhotos();
+    seedBrain();
+
+    function progressLoop(startTime){
+      const total = redirectAfter;
+      function step(){
+        const now = Date.now() - startTime;
+        const pct = Math.min(100, Math.max(0, (now / total) * 100));
+        fill.style.width = pct + '%';
+        meta.textContent = `Acessando hardware seguro • ${Math.floor(pct)}%`;
+        if(now > timeline[1] && now < timeline[1]+1000) glitch.dataset.text = 'IDENTIDADE LOCALIZADA';
+        if(now > timeline[2] && now < timeline[2]+1200) glitch.dataset.text = 'ARQUIVOS RECONHECIDOS';
+        if(now > timeline[3] && now < timeline[3]+1200) glitch.dataset.text = 'INSTALAÇÃO EM ANDAMENTO';
+        if(now > timeline[4] && now < timeline[4]+1200) glitch.dataset.text = 'NEURÔNIOS ONLINE';
+        if(now > timeline[5] && now < timeline[5]+1200) glitch.dataset.text = 'VOCÊ É O JOGO';
+
+        photos.style.opacity = 0.02 + Math.min(0.12, (now/total)*0.12);
+        brain.style.opacity = Math.min(0.12, Math.max(0, (now - timeline[2]) / (total - timeline[2]) * 0.12));
+
+        if(now < total) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function startExperience(){
+      const startTime = Date.now();
+      progressLoop(startTime);
+
+      setTimeout(()=>{ glitch.textContent = 'IDENTIDADE LOCALIZADA'; glitch.dataset.text='IDENTIDADE LOCALIZADA'; }, timeline[1]);
+      setTimeout(()=>{ glitch.textContent = 'ARQUIVOS RECONHECIDOS'; glitch.dataset.text='ARQUIVOS RECONHECIDOS'; }, timeline[2]);
+      setTimeout(()=>{ glitch.textContent = 'INSTALAÇÃO EM ANDAMENTO'; glitch.dataset.text='INSTALAÇÃO EM ANDAMENTO'; }, timeline[3]);
+      setTimeout(()=>{ glitch.textContent = 'NEURÔNIOS ONLINE'; glitch.dataset.text='NEURÔNIOS ONLINE'; }, timeline[4]);
+      setTimeout(()=>{ glitch.textContent = 'VOCÊ É O JOGO'; glitch.dataset.text='VOCÊ É O JOGO'; }, timeline[5]);
+
+      setTimeout(()=>{
+        document.body.style.transition='opacity 800ms ease'; 
+        document.body.style.opacity='0';
+        setTimeout(()=>{ window.location.href = '/./membrana/main.html'; }, 36050);
+      }, redirectAfter);
+    }
+
+    window.addEventListener('load', ()=>{
+      startExperience();
+    });
+  </script>
+
+<!-- Script de Áudio de Fundo -->
+<audio id="backgroundAudio" loop style="display: none;">
+    <source src="./opening.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button onclick="toggleAudio()" id="audioToggle" 
+            style="background: #3182ce; color: white; border: none; padding: 10px 15px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        🔇 Áudio
+    </button>
+</div>
+
+<script>
+    // Elementos
+    const audio = document.getElementById('backgroundAudio');
+    const toggleBtn = document.getElementById('audioToggle');
+    
+    // Configurações iniciais
+    audio.volume = 0.3;
+    let isPlaying = false;
+    
+    // Função para alternar áudio
+    function toggleAudio() {
+        if (isPlaying) {
+            audio.pause();
+            toggleBtn.innerHTML = '🔇 Áudio';
+            toggleBtn.style.background = '#e53e3e';
+        } else {
+            audio.play().catch(error => {
+                console.log('Erro ao reproduzir áudio:', error);
+                toggleBtn.innerHTML = '❌ Erro';
+            });
+            toggleBtn.innerHTML = '🔊 Áudio';
+            toggleBtn.style.background = '#3182ce';
+        }
+        isPlaying = !isPlaying;
+    }
+    
+    // Iniciar automaticamente (opcional)
+    // window.addEventListener('load', function() {
+    //     setTimeout(toggleAudio, 2000);
+    // });
+</script>
+
 </body>
 </html>

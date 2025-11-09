@@ -449,11 +449,11 @@
   <script>
     // Configuração inicial
     const gameState = {
-      xp: 0,
+      xp: 50,
       level: 1,
       completedMissions: [],
-      unlockedMissions: [1],
-      terminalHistory: [],
+      unlockedMissions: [],
+      terminalHistory: [1],
       neuroSync: 87
     };
 
@@ -463,12 +463,12 @@
         id: 1,
         title: "INICIAÇÃO NEURAL",
         description: "Complete o protocolo de sincronização cerebral para acessar o sistema.",
-        reward: 100,
+        reward: 200,
         completed: false,
         locked: false,
         puzzle: {
           type: "code",
-          solution: "MEMBRANA228",
+          solution: "MEMBRANA",
           hint: "O código está no título da página"
         }
       },
@@ -476,13 +476,13 @@
         id: 2,
         title: "DECODIFICAÇÃO HEX",
         description: "Decifre a mensagem codificada em hexadecimal encontrada nos servidores do Portal Floripa.",
-        reward: 150,
+        reward: 250,
         completed: false,
         locked: true,
         requiresLevel: 2,
         puzzle: {
           type: "hex",
-          solution: "4D454D4252414E41",
+          solution: "MEMBRANA",
           hint: "Converta para ASCII"
         }
       },
@@ -490,7 +490,7 @@
         id: 3,
         title: "ESPECTRO SONORO",
         description: "Analise o arquivo de áudio e extraia a mensagem oculta no espectrograma.",
-        reward: 200,
+        reward: 300,
         completed: false,
         locked: true,
         requiresLevel: 3,
@@ -504,13 +504,13 @@
         id: 4,
         title: "INTRUSÃO DIGITAL",
         description: "Acesse o sistema interno do Portal Floripa usando as credenciais obtidas.",
-        reward: 300,
+        reward: 400,
         completed: false,
         locked: true,
-        requiresLevel: 4,
+        requiresLevel: 3,
         puzzle: {
           type: "terminal",
-          solution: "ssh floripa@192.168.7.228",
+          solution: "floripa@192.168.7.228",
           hint: "Use o comando SSH"
         }
       },
@@ -521,7 +521,7 @@
         reward: 500,
         completed: false,
         locked: true,
-        requiresLevel: 5,
+        requiresLevel: 4,
         puzzle: {
           type: "sequence",
           solution: "↑↑↓↓←→←→BA",
@@ -569,6 +569,13 @@
     // Renderiza as missões na tela
     function renderMissions() {
       DOM.missionsGrid.innerHTML = '';
+    // Reaplica o estado de missões desbloqueadas com base no progresso salvo
+missions.forEach(m => {
+  if (gameState.unlockedMissions.includes(m.id)) {
+    m.locked = false;
+  }
+});
+
       
       missions.forEach(mission => {
         const missionEl = document.createElement('div');
@@ -644,10 +651,12 @@
       mission.completed = true;
       gameState.completedMissions.push(missionId);
       gameState.xp += mission.reward;
+      saveProgress();
       
       // Verifica se novas missões devem ser desbloqueadas
       checkUnlockedMissions();
-      
+      saveProgress();
+
       // Atualiza a UI
       updateHUD();
       renderMissions();
@@ -659,6 +668,7 @@
       
       // Verifica se subiu de nível
       checkLevelUp();
+      saveProgress();
     }
 
     // Verifica se subiu de nível
@@ -666,9 +676,9 @@
       const levels = [
         { xp: 0, level: 1 },
         { xp: 200, level: 2 },
-        { xp: 500, level: 3 },
-        { xp: 1000, level: 4 },
-        { xp: 2000, level: 5 }
+        { xp: 300, level: 3 },
+        { xp: 500, level: 4 },
+        { xp: 1000, level: 5 }
       ];
       
       const newLevel = levels.reduce((maxLevel, threshold) => {
@@ -685,19 +695,29 @@
     }
 
     // Verifica missões desbloqueadas
-    function checkUnlockedMissions() {
-      missions.forEach(mission => {
-        if (!mission.locked) return;
-        
+  function checkUnlockedMissions() {
+  let newlyUnlocked = false;
+  saveProgress();
+
+  
+  missions.forEach(mission => {
+    if (!mission.locked || mission.completed) return;
+      saveProgress();
+    
+    // Verifica requisitos de nível
+    const levelRequirementMet = !mission.requiresLevel || gameState.level >= mission.requiresLevel;
+
         // Desbloqueia por nível
         if (mission.requiresLevel && mission.requiresLevel <= gameState.level) {
           mission.locked = false;
           if (!gameState.unlockedMissions.includes(mission.id)) {
             gameState.unlockedMissions.push(mission.id);
             addToTerminal(`> Novo protocolo disponível: ${mission.title}`);
+            saveProgress();
           }
         }
         
+
         // Desbloqueia por dependência (opcional)
         // if (mission.requiresMission && gameState.completedMissions.includes(mission.requiresMission)) {
         //   mission.locked = false;
@@ -711,6 +731,7 @@
       DOM.level.textContent = gameState.level;
       DOM.missionsCompleted.textContent = gameState.completedMissions.length;
       DOM.neuroSync.textContent = `${gameState.neuroSync}%`;
+      saveProgress();
     }
 
     // Terminal interativo
