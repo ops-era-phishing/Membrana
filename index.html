@@ -217,7 +217,7 @@
       setTimeout(()=>{
         document.body.style.transition='opacity 800ms ease'; 
         document.body.style.opacity='0';
-        setTimeout(()=>{ window.location.href = '/./membrana/main.html'; }, 36050);
+        setTimeout(()=>{ window.location.href = './game/index.html'; }, 900);
       }, redirectAfter);
     }
 
@@ -225,51 +225,5 @@
       startExperience();
     });
   </script>
-
-<!-- Script de Áudio de Fundo -->
-<audio id="backgroundAudio" loop style="display: none;">
-    <source src="./opening.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
-</audio>
-
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-    <button onclick="toggleAudio()" id="audioToggle" 
-            style="background: #3182ce; color: white; border: none; padding: 10px 15px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-        🔇 Áudio
-    </button>
-</div>
-
-<script>
-    // Elementos
-    const audio = document.getElementById('backgroundAudio');
-    const toggleBtn = document.getElementById('audioToggle');
-    
-    // Configurações iniciais
-    audio.volume = 0.3;
-    let isPlaying = false;
-    
-    // Função para alternar áudio
-    function toggleAudio() {
-        if (isPlaying) {
-            audio.pause();
-            toggleBtn.innerHTML = '🔇 Áudio';
-            toggleBtn.style.background = '#e53e3e';
-        } else {
-            audio.play().catch(error => {
-                console.log('Erro ao reproduzir áudio:', error);
-                toggleBtn.innerHTML = '❌ Erro';
-            });
-            toggleBtn.innerHTML = '🔊 Áudio';
-            toggleBtn.style.background = '#3182ce';
-        }
-        isPlaying = !isPlaying;
-    }
-    
-    // Iniciar automaticamente (opcional)
-    // window.addEventListener('load', function() {
-    //     setTimeout(toggleAudio, 2000);
-    // });
-</script>
-
 </body>
 </html>
