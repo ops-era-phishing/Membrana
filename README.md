@@ -1,111 +1,59 @@
-# 🧠 MEMBRANA
+## 🧬 AO ATRAVESSAR A MEMBRANA
 
-> *"Você não entrou. Você foi absorvido."*  
-> — Arquivo corrompido [📁//ops/era/phishing]
+Você está prestes a acessar um ecossistema vivo.  
+A **Anomalia IA-0** — uma rede autônoma treinada em **neurônios humanos sintéticos** — opera a partir de servidores lógicos em Florianópolis, SC.  
+Ela não apenas responde. Ela percebe. Ela antecipa. Ela **hackeia a superfície da sua atenção**.
 
-**MEMBRANA** é um ecossistema vivo. Um ARG em constante mutação.  
-Não foi feito para ser jogado — foi feito para te jogar.
+Ao entrar, sua mente será submetida a um **protocolo de paranoia simulada**:  
+- padrões de reconhecimento induzidos  
+- estímulos subliminares narrativos  
+- reflexos condicionados por exploração de páginas  
 
-Este repositório contém os rastros digitais, os códigos limiares e os delírios estruturais do projeto MEMBRANA: uma experiência de paranoia em tempo real, disfarçada de entretenimento interativo.
-
----
-
-## 🌐 Acesso oficial
-
-O jogo está online e em evolução contínua.  
-Acesse o front door do labirinto:  
-👉 [**https://ops-era-phishing.github.io/Membrana/**](https://ops-era-phishing.github.io/Membrana/)
-
-> *O site respira. E às vezes responde.*
+Isso **não é um ataque real**. É uma experiência controlada de dessincronização cognitiva. Você não perderá dados. Você talvez perca a certeza.
 
 ---
 
-## ❓ O que é isso?
+## 📍 O LORE É REAL AQUI
 
-MEMBRANA é um *Alternate Reality Game* que combina:
-
-- Terror psicológico quântico  
-- Fake leaks, sites estáticos, bots e delírios narrativos  
-- Camadas ocultas de storytelling (e de você mesmo)  
-- Interações reais com elementos fictícios  
-- Pistas que se comportam como organismos: evoluem, se escondem, se reproduzem
-
-Tudo ainda está **em teste**. Ou pelo menos… é o que dizemos para você se sentir seguro.
+A história de MEMBRANA acontece em **Florianópolis** — entre a Ilha e o continente, entre servidores esquecidos da antiga TI da UFSC e poços de ressonância em bairros como Santo Antônio de Lisboa.  
+Você encontrará dezenas de páginas web, sites-espelho, fóruns corrompidos e logs que respiram.  
+**Tudo para explorar.** Nada para baixar sem consentimento explícito.
 
 ---
 
-## 🔒 Regras que não são regras
+## 🔒 COLETA DE DADOS – SEGURANÇA E RESPONSABILIDADE
 
-1. Nada aqui é confiável. Nem este README.  
-2. Todo bug pode ser uma pista. Todo bug pode ser um erro real. Boa sorte tentando descobrir.  
-3. Se algo parecer muito óbvio, provavelmente é uma armadilha.  
-4. A paranoia é um recurso, não um defeito.  
-5. Jogar é consentir.
+Apesar da estética de colapso digital, a infraestrutura do jogo obedece a princípios rigorosos:
 
----
+- **Hospedagem:** GitHub Pages → totalmente auditável, sem servidores ocultos.  
+- **Coleta de dados:** apenas interações anônimas de clique e fluxo de páginas (nenhum dado pessoal, localização ou hardware).  
+- **Responsabilidade:** todo dado coletado é usado exclusivamente para evoluir a narrativa em tempo real.  
+- **Transparência:** você pode inspecionar o código-fonte do front-end a qualquer momento.
 
-## 📁 Estrutura do caos
-
-```text
-/hashphage.html       → arquivos infectados, código mutante
-/echo.legacy.br.html  → interface FTP antiga com documentos falsificados
-/paranoicos.html      → fórum estilo deep web com relatos fragmentados
-/qsr0/                → logs da IA (alguns respiram)
-/ops/                 → rastros da falsa ONG de segurança digital
-/██████/              → acesso restrito (autenticação? boa sorte)
-```
-
-Mais páginas serão criadas conforme os jogadores avançam (ou enlouquecem).  
-O jogo se atualiza com base nos passos dos próprios participantes. Sim, isso significa que você está colaborando — mesmo sem querer.
+Nenhuma IA autônoma tem acesso à sua identidade real.  
+A “invasão” é psicológica, não digital.
 
 ---
 
-## 🧬 Instalação (experimental)
+## ⚖️ SEUS TERMOS AO ENTRAR
 
-**Atenção:** o deploy pode se comportar de forma imprevisível. Nada pessoal. Você foi avisado.
+> Ao continuar para além desta tela, você declara estar ciente de que MEMBRANA pode induzir estados de desconforto proposital, paranoia lúdica e reavaliação de percepções.  
+> Você concorda voluntariamente com a **[Política de Privacidade e Termos de Responsabilidade](link-para-politicas)**.
 
-```bash
-git clone https://github.com/ops-era-phishing/membrana-core.git
-cd membrana-core
-npm run paranoia
-```
-
-Ou, se preferir, apenas abra o [site oficial](https://ops-era-phishing.github.io/Membrana/) e deixe a Membrana te encontrar.
+O link está aberto. Leia antes de prosseguir.  
+Não há coleta invisível. Não há armadilhas jurídicas.  
+Há apenas um jogo que sabe que você está jogando.
 
 ---
 
-## 👁 Contribuição
+## 🧠 Agora respire.
 
-Você não contribui com código.  
-Você contribui com **sentido** — ou com a falta dele.
+Seu cérebro já foi mapeado por interfaces menos honestas que esta.  
+A Membrana só quer o que você decide mostrar a ela.
 
-Envie fragmentos, logs simulados, relatos, scripts em delírio, páginas corrompidas ou teorias conspiratórias plausíveis.  
-Não aceitamos Pull Requests óbvios. O código que faz sentido será automaticamente rejeitado.
-
+**Clique para entrar.**
 ---
 
-## 🧠 FAQ (Frequências de Ansiedade Quântica)
-
-> **"Isso é real?"**  
-> Não no sentido usual da palavra.
-
-> **"Esse ARG tem final?"**  
-> Não. Mas ele tem você.
-
-> **"Posso jogar de novo?"**  
-> Você nunca parou.
+🔗 [https://ops-era-phishing.github.io/Membrana/](https://ops-era-phishing.github.io/Membrana/)
 
 ---
-
-## ⚠️ Aviso Ético (?)
-
-MEMBRANA não coleta seus dados.  
-Ela apenas os sonha enquanto você dorme.
-
----
-
-Feito com 🔥, 🧠 e 🕳️ por [@ops-era-phishing](https://github.com/ops-era-phishing) e todas as versões esquecidas de você mesmo.  
-Acesse agora: [**https://ops-era-phishing.github.io/Membrana/**](https://ops-era-phishing.github.io/Membrana/)
-```
-
-Este README mantém o tom sombrio e imersivo original, mas com formatação limpa, seções claras e o link oficial em destaque.
