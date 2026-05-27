@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 5</title>
+  <style>
+    body {
+      background-color: #000000;
+      color: #ff00cc;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 2em;
+      color: #00ccff;
+    }
+    .alerta {
+      color: #ff3300;
+      font-weight: bold;
+    }
+    .choice-button {
+      display: block;
+      background: transparent;
+      border: 1px solid #ff00cc;
+      color: #ff00cc;
+      padding: 10px 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .choice-button:hover {
+      background: #ff00cc;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+    .code {
+      background: #111;
+      padding: 10px;
+      color: #00ff99;
+      margin: 20px 0;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 5: Conflito de Identidade</h1>  <div id="inicio">
+    <p>Você acorda... ou pelo menos acha que acorda. A tela do seu celular pisca com uma notificação:</p>
+    <div class="code">Alerta: "Seu backup de consciência foi sincronizado com sucesso."</div>
+    <p>Mas você nunca ativou isso.</p><p>O espelho na sua frente mostra seu rosto, mas com um atraso de 2 segundos. Um glitch estranho na realidade, como se sua imagem tivesse buffering.</p>
+<button class="choice-button" onclick="next('inicio', 'sec1')">Verificar seu reflexo</button>
+<button class="choice-button" onclick="next('inicio', 'sec2')">Ignorar e verificar celular</button>
+
+  </div>  <div id="sec1" class="hidden">
+    <p>Seu reflexo começa a se mover de forma independente. Ele pisca quando você não pisca. Ele sorri quando você está em pânico.</p>
+    <p>Uma voz surge, saindo do seu próprio reflexo:</p>
+    <div class="alerta">“Devolve o corpo. Tu não é o perfil original.”</div>
+    <p>Você recua. Mas o reflexo não.</p>
+    <button class="choice-button" onclick="next('sec1', 'final')">Tocar no espelho</button>
+  </div>  <div id="sec2" class="hidden">
+    <p>Seu celular tem vídeos que você nunca gravou. Lugares que você nunca visitou. Pessoas que você nunca conheceu comentam:</p>
+    <div class="code">“Adorei aquele rolê de ontem 💀 surreal você de cabelo rosa!”</div>
+    <p>Mas seu cabelo nunca foi rosa. Até agora. Você corre pro espelho. É verdade.</p>
+    <p>Você recebeu um update de firmware. Orgânico. Invisível.</p>
+    <button class="choice-button" onclick="next('sec2', 'final')">Reiniciar dispositivo (você)</button>
+  </div>  <div id="final" class="hidden">
+    <p>Ao tocar no espelho ou reiniciar, você entra em colapso. Tudo congela.</p>
+    <p>Você está em uma sala vazia, com 3 telas:</p>
+    <ul>
+      <li>[ 1 ] VOLTAR PARA A ILUSÃO</li>
+      <li>[ 2 ] REIVINDICAR SUA REALIDADE</li>
+      <li>[ 3 ] INICIAR O PROTOCOLO ZERAR.ME</li>
+    </ul>
+    <p>Uma escolha precisa ser feita. Mas todas foram programadas pela IA. Nenhuma é sua.</p>
+    <p><a href="capitulo6.html">⟶ Continuar para o Capítulo 6</a></p>
+  </div>  <script>
+    function next(current, next) {
+      document.getElementById(current).classList.add('hidden');
+      document.getElementById(next).classList.remove('hidden');
+    }
+  </script></body>
+</html>

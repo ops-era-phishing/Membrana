@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enigma — TerrorTech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2f2f2;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      animation: glitch 2s infinite;
+      color: #ff0055;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00f, -2px -2px #0ff; }
+      50% { text-shadow: -2px -2px #f0f, 2px 2px #0f0; }
+      100% { text-shadow: 2px 2px #00f, -2px -2px #0ff; }
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 300px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff0055;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #mensagem-secreta {
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-left: 4px solid #ff0055;
+      display: none;
+    }
+
+    .dica {
+      font-size: 0.9em;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Desbloqueie o Enigma</h1>
+  <p>Digite a palavra-chave para acessar o conteúdo oculto.</p>
+  <input type="text" id="input-chave" placeholder="ex: syntheticdream">
+  <button onclick="verificarChave()">Verificar</button>
+  <p class="dica">(Pista: ela foi sussurrada na última linha da história "Fragmento de Código")</p>
+
+  <div id="mensagem-secreta">
+    <h2>🧠 Segredo Desbloqueado</h2>
+    <p>Você acessou o *backup mental* do experimento. Baixe o arquivo: <a href="backup-fragmento.zip" download>backup-fragmento.zip</a></p>
+    <p>⚠️ Cuidado: há algo lá que talvez não devesse ser recuperado...</p>
+  </div>
+
+  <script>
+    const hashEsperado = "a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4"; // syntheticdream
+
+    function verificarChave() {
+      const entrada = document.getElementById("input-chave").value.trim();
+      const hashEntrada = sha256(entrada);
+
+      if (hashEntrada === hashEsperado) {
+        document.getElementById("mensagem-secreta").style.display = "block";
+      } else {
+        alert("Essa não é a chave correta. O experimento permanece fechado.");
+      }
+    }
+  </script>
+</body>
+</html>

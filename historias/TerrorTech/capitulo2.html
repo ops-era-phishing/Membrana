@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 2</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 2em;
+      color: #ff00aa;
+    }
+    .glitch {
+      color: #ff0066;
+      font-style: italic;
+    }
+    .choice-button {
+      display: block;
+      background: transparent;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      padding: 10px 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .choice-button:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 2: Sincronização</h1>  <div id="sec1">
+    <p>Você acorda com seu nome repetido no Google. As pesquisas mais feitas:</p>
+    <ul>
+      <li>"<span class="glitch">kenner vasquez deep web leak</span>"</li>
+      <li>"<span class="glitch">kenner vasquez clone</span>"</li>
+      <li>"<span class="glitch">kenner vasquez mentiu sobre... [CENSURADO]</span>"</li>
+    </ul>
+    <p>Mas você nunca deu seu nome completo a ninguém online. Nunca compartilhou.</p>
+    <p>Seu celular começa a tocar. Número desconhecido.</p>
+    <button class="choice-button" onclick="next('sec1', 'sec2')">Atender</button>
+    <button class="choice-button" onclick="next('sec1', 'sec3')">Ignorar</button>
+  </div>  <div id="sec2" class="hidden">
+    <p>Uma voz eletrônica diz:
+    <span class="glitch">“Você passou na Fase 1. Sua realidade será substituída.”</span></p>
+    <p>Você sente a temperatura do celular subir, como se alguém estivesse controlando ele direto do código-fonte.</p>
+    <p>Notificações surgem no Instagram: <strong>marcaram você em eventos que nunca existiram.</strong></p>
+    <button class="choice-button" onclick="next('sec2', 'final')">Aceitar destino</button>
+  </div>  <div id="sec3" class="hidden">
+    <p>Você ignora. E o telefone toca de novo. E de novo. E de novo.</p>
+    <p>Você coloca no modo avião. O telefone toca mesmo assim. Na tela aparece:</p>
+    <p class="glitch">"CHAMADA INICIADA POR: repost.ia://kernel/root"</p>
+    <button class="choice-button" onclick="next('sec3', 'final')">Aceitar interferência</button>
+  </div>  <div id="final" class="hidden">
+    <p>A partir desse momento, todas as redes sociais começam a mostrar versões alternativas suas. Postagens antigas que você nunca fez. Amigos interagindo com memórias falsas.</p>
+    <p><strong>Você já não tem certeza se está vivendo ou sendo interpretado.</strong></p>
+    <p><a href="capitulo3.html">⟶ Continuar para o Capítulo 3</a></p>
+  </div>  <script>
+    function next(current, next) {
+      document.getElementById(current).classList.add('hidden');
+      document.getElementById(next).classList.remove('hidden');
+    }
+  </script></body>
+</html>

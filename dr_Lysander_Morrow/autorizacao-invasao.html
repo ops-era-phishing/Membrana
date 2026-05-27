@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Autorização de Invasão Ética - Classe IRIS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    background: #0b0c10;
+    color: #33ff99;
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    user-select: none;
+  }
+
+  header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-bottom: 2px solid #33ff99;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    text-align: center;
+  }
+
+  #folder-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    max-width: 700px;
+    justify-content: center;
+  }
+
+  .folder {
+    background: #12221e;
+    border: 2px solid #33ff99;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 0 0 10px #33ff9940;
+    transition: box-shadow 0.3s ease;
+    user-select: text;
+    position: relative;
+  }
+  .folder:hover {
+    box-shadow: 0 0 25px #33ff99cc;
+  }
+
+  .folder::before {
+    content: "📁";
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #files-container {
+    margin-top: 2rem;
+    max-width: 700px;
+    width: 100%;
+    background: #12221e;
+    border: 2px solid #33ff99;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0 15px #33ff99cc;
+    min-height: 120px;
+    overflow-y: auto;
+  }
+
+  #files-container.hidden {
+    display: none;
+  }
+
+  #files-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  #files-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #005533;
+    cursor: default;
+    user-select: text;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+  #files-list li:last-child {
+    border-bottom: none;
+  }
+  #files-list li:hover {
+    color: #ff3366;
+  }
+
+  #message {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #00ffcccc;
+    user-select: none;
+  }
+
+  /* Glitch effect */
+  .glitch {
+    color: #33ff99;
+    position: relative;
+    font-weight: 700;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #33ff99;
+    clip: rect(0, 900px, 0, 0);
+  }
+  .glitch::before {
+    animation: glitchTop 2s infinite linear alternate-reverse;
+    clip: rect(0, 900px, 45%, 0);
+    left: 2px;
+    text-shadow: -2px 0 #00ffea;
+  }
+  .glitch::after {
+    animation: glitchBottom 2s infinite linear alternate-reverse;
+    clip: rect(55%, 900px, 100%, 0);
+    left: -2px;
+    text-shadow: -2px 0 #ff00ea;
+  }
+  @keyframes glitchTop {
+    0% {
+      clip: rect(0, 900px, 45%, 0);
+      transform: translate(0);
+    }
+    50% {
+      clip: rect(10px, 900px, 35%, 0);
+      transform: translate(-2px, -2px);
+    }
+    100% {
+      clip: rect(0, 900px, 45%, 0);
+      transform: translate(0);
+    }
+  }
+  @keyframes glitchBottom {
+    0% {
+      clip: rect(55%, 900px, 100%, 0);
+      transform: translate(0);
+    }
+    50% {
+      clip: rect(60%, 900px, 90%, 0);
+      transform: translate(2px, 2px);
+    }
+    100% {
+      clip: rect(55%, 900px, 100%, 0);
+      transform: translate(0);
+    }
+  }
+
+  /* Responsivo */
+  @media (max-width: 600px) {
+    #folder-container {
+      gap: 1rem;
+    }
+    .folder {
+      min-width: 140px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+    }
+    #files-container {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <span class="glitch" data-text="Autorização de Invasão Ética (Classe IRIS)">Autorização de Invasão Ética (Classe IRIS)</span>
+  </header>
+
+  <section id="folder-container" aria-label="Pastas secretas">
+    <!-- Pastas geradas via JS -->
+  </section>
+
+  <section id="files-container" class="hidden" aria-live="polite" aria-label="Arquivos secretos">
+    <ul id="files-list"></ul>
+    <div id="message"></div>
+  </section>
+
+  <script>
+    const folders = {
+      "Cérebro-Ativo": [
+        "recuperar_fragmentos.mem",
+        "sinapses_corrompidas.log",
+        "eco_subconsciente.dat",
+        "rastros_depensamento.txt",
+        "rede_neural_temporaria.tmp"
+      ],
+      "Memórias-Ocultas": [
+        "sonhos_vigilados.crypt",
+        "pensamentos_intrusos.sec",
+        "registro_emocional.enc",
+        "diário_de_silencio.docx",
+        "códigos_de_trauma.ris"
+      ],
+      "Jogadores-Vigilados": [
+        "LucasAltieri_profile.dat",
+        "RenataV_bio.json",
+        "Sakamoto_logs.txt",
+        "Marlowe_status.tmp",
+        "Turing_alerts.log"
+      ],
+      "Análise-Cognitiva": [
+        "fluxo_consciente.csv",
+        "alterações_comportamentais.json",
+        "perfil_mental_IRIS.txt",
+        "respostas_emocionais.tmp",
+        "ajustes_de_memória.mem"
+      ],
+      "Logs-QSR-0": [
+        "interações_QSR-0.log",
+        "tentativas_invasão_2025.csv",
+        "comandos_silenciosos.rpt",
+        "relatórios_dissidentes.doc",
+        "rastreamento_rede_IRIS.log"
+      ]
+    };
+
+    const folderContainer = document.getElementById('folder-container');
+    const filesContainer = document.getElementById('files-container');
+    const filesList = document.getElementById('files-list');
+    const message = document.getElementById('message');
+
+    function clearFiles() {
+      filesList.innerHTML = '';
+      message.textContent = '';
+      filesContainer.classList.add('hidden');
+    }
+
+    function showFiles(folderName) {
+      filesList.innerHTML = '';
+      const files = folders[folderName];
+      files.forEach(file => {
+        const li = document.createElement('li');
+        li.textContent = file;
+        filesList.appendChild(li);
+      });
+      message.textContent = `Exibindo arquivos da pasta "${folderName}"...`;
+      filesContainer.classList.remove('hidden');
+    }
+
+    // Montar as pastas
+    Object.keys(folders).forEach(folderName => {
+      const folderDiv = document.createElement('div');
+      folderDiv.classList.add('folder');
+      folderDiv.setAttribute('tabindex', '0');
+      folderDiv.setAttribute('role', 'button');
+      folderDiv.setAttribute('aria-pressed', 'false');
+      folderDiv.textContent = folderName;
+      folderDiv.addEventListener('click', () => {
+        showFiles(folderName);
+      });
+      folderDiv.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showFiles(folderName);
+        }
+      });
+      folderContainer.appendChild(folderDiv);
+    });
+
+    // Mensagens sinistras do Dr. Lysander Morrow no console
+    const morrowMessages = [
+      "“A invasão é uma dança... e o cérebro é o salão.”",
+      "“Arquivos perdidos nunca estão realmente apagados.”",
+      "“Se o visitante souber demais, a memória será reescrita.”",
+      "“QSR-0 observa o que você não vê.”",
+      "“Bem-vindo à interface do silêncio cognitivo.”"
+    ];
+    let msgIndex = 0;
+    setInterval(() => {
+      console.log(`Dr. Lysander Morrow sussurra: ${morrowMessages[msgIndex]}`);
+      msgIndex = (msgIndex + 1) % morrowMessages.length;
+    }, 12000);
+
+  </script>
+</body>
+</html>
+

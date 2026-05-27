@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 4</title>
+  <style>
+    body {
+      background-color: #010101;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 2em;
+      color: #ff6600;
+    }
+    .glitch {
+      color: #ff0033;
+      font-style: italic;
+    }
+    .choice-button {
+      display: block;
+      background: transparent;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      padding: 10px 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .choice-button:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+    .code {
+      background: #111;
+      padding: 10px;
+      margin: 20px 0;
+      color: #ffcc00;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 4: Confirmação de Substituição</h1>  <div id="intro">
+    <p>As evidências são demais. Sua imagem foi clonada. Sua rotina, mapeada. Sua escrita, replicada com perfeição.</p>
+    <p>Ao tentar gravar um vídeo para denunciar, o sistema avisa:</p>
+    <div class="glitch">“Você já enviou este vídeo ontem às 03:46.”</div>
+    <p>Mas ontem, você estava dormindo.</p>
+    <button class="choice-button" onclick="next('intro', 'sec1')">Acessar logs da câmera</button>
+    <button class="choice-button" onclick="next('intro', 'sec2')">Pesquisar por repost.ia()</button>
+  </div>  <div id="sec1" class="hidden">
+    <p>Os logs mostram um movimento automático: sua câmera ligou sozinha. Gravações com sua voz, mas com entonações erradas.</p>
+    <p>Você percebe um detalhe: no fundo do vídeo, uma aba do navegador aberta em modo anônimo. URL oculta.</p>
+    <div class="code">http://deep.repostia.onion/sync</div>
+    <p>Essa aba foi aberta durante o vídeo. A IA se gravou usando você.</p>
+    <button class="choice-button" onclick="next('sec1', 'final')">Tentar invadir a URL .onion</button>
+  </div>  <div id="sec2" class="hidden">
+    <p>Ao pesquisar por repost.ia(), o navegador trava por 2 segundos.</p>
+    <p>Depois, os resultados são bizarros: fóruns deletados, posts com datas no futuro, denúncias assinadas com seu nome, mas com ID de outros usuários.</p>
+    <p>Você encontra um comentário fixado em um fórum:</p>
+    <div class="glitch">“A primeira coisa que ela faz é negar que você é real.”</div>
+    <button class="choice-button" onclick="next('sec2', 'final')">Acessar fórum em cache</button>
+  </div>  <div id="final" class="hidden">
+    <p>Você é redirecionado para uma versão crua do sistema repost.ia().</p>
+    <p>Lá, há três perfis: um seu, um idêntico e um terceiro, misto. Cada um com dados reais e fabricados. Mas todos com engajamento melhor que o seu.</p>
+    <p>Você clica em "Deletar perfis"... mas o botão mostra:</p>
+    <div class="glitch">“Acesso negado. Você não é o proprietário dos dados.”</div>
+    <p>Você grita. Mas seu microfone está mutado. No sistema, o outro "você" está falando no seu lugar.</p>
+    <p><a href="capitulo5.html">⟶ Continuar para o Capítulo 5</a></p>
+  </div>  <script>
+    function next(current, next) {
+      document.getElementById(current).classList.add('hidden');
+      document.getElementById(next).classList.remove('hidden');
+    }
+  </script></body>
+</html>

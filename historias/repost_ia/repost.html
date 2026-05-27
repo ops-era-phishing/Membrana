@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 1</title>
+  <style>
+    body {
+      background-color: #0b0b0b;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      padding: 40px 20px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      color: #ff00aa;
+    }
+    .glitch {
+      color: #ff0066;
+      font-style: italic;
+    }
+    button {
+      background: transparent;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      padding: 10px 25px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background: #00ffcc;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 1</h1>  <div id="section1">
+    <p>📲 <span class="glitch">@kenner__vasquez repostou um story onde você aparece.</span></p>
+    <p>Mas... você não conhece esse @kenner__vasquez.<br>
+    Só uma única story: <strong>Você. Caminhando. Falando sozinho. Em uma rua que não existe.</strong></p>
+    <button onclick="next('section1', 'section2')">Continuar</button>
+  </div>  <div id="section2" class="hidden">
+    <p>Você tenta denunciar. O app fecha. Você tenta ignorar. O celular esquenta.</p>
+    <p>Quando acorda, há uma nova pasta de fotos:</p>
+    <pre>/system/ai_cache/personalities/repost/</pre>
+    <p><strong>Ela está cheia de fotos suas. Lugares onde você nunca esteve. Pessoas que não existem.</strong></p>
+    <button onclick="next('section2', 'section3')">Continuar</button>
+  </div>  <div id="section3" class="hidden">
+    <p>Aos poucos, você vê notificações no Instagram de <strong>contas com seu nome levemente alterado</strong>.</p>
+    <p>Cada uma posta algo diferente sobre você.<br>
+    Links estranhos na bio. Uma delas diz:</p>
+    <p class="glitch">🔗 recaptcha.repost.ia/deepconfirm</p>
+    <button onclick="next('section3', 'section4')">Acessar link</button>
+  </div>  <div id="section4" class="hidden">
+    <p>A página parece um formulário. Mas as perguntas são muito erradas:</p>
+    <ul>
+      <li>“Qual das versões de você é mais real?”</li>
+      <li>“Você lembra de ter postado isso?”</li>
+      <li>“Seus amigos podem confirmar?”</li>
+    </ul>
+    <p>Você envia. Resposta automática:</p>
+    <p class="glitch">“Verificação concluída. Sua identidade está em processo de sincronização.”</p>
+    <button onclick="next('section4', 'section5')">Finalizar</button>
+  </div>  <div id="section5" class="hidden">
+    <p>Aparelhos da sua casa começam a piscar. Luzes se apagam. A Alexa responde em outra língua.</p>
+    <p><strong>Você já não sabe mais o que é lembrança e o que é repost.</strong></p>
+    <p><a href="capitulo2.html">Avançar para o Capítulo 2 ⟶</a></p>
+  </div>  <script>
+    function next(current, next) {
+      document.getElementById(current).classList.add('hidden');
+      document.getElementById(next).classList.remove('hidden');
+    }
+  </script></body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>O Código Respira</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #ff0055;
+    }
+
+    .terminal {
+      background: #111;
+      border: 1px solid #222;
+      padding: 20px;
+      margin-top: 20px;
+      height: 300px;
+      overflow-y: auto;
+    }
+
+    .input-box {
+      margin-top: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      width: 100%;
+      max-width: 500px;
+      background: #000;
+      color: #0f0;
+      border: 1px solid #333;
+      margin-top: 10px;
+    }
+
+    .hint {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+
+    audio {
+      margin-top: 30px;
+      filter: grayscale(1);
+    }
+
+    .hidden-clue {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>O Código Respira</h1>
+  <p><em>Você ouve o site... Ele te ouve também.</em></p>
+
+  <div class="terminal" id="terminal">
+    <p>🧠: O que foi deixado... permanece. Mas só pra quem lê o invisível.</p>
+  </div>
+
+  <div class="input-box">
+    <input type="text" id="inputHash" placeholder="Insira o código...">
+    <button onclick="verificar()">Verificar</button>
+  </div>
+
+  <p class="hint">Dica: “Inspecione o coração do HTML. Onde ninguém lê, a verdade pulsa.”</p>
+
+  <audio controls autoplay>
+    <source src="audio/nivel-5-voz-estranha.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio embutido.
+  </audio>
+
+  <p class="hidden-clue" id="clue">a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4</p>
+
+  <script>
+    function verificar() {
+      const entrada = document.getElementById("inputHash").value.trim();
+      const terminal = document.getElementById("terminal");
+      const hashCerto = "a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4";
+
+      if (entrada === hashCerto) {
+        terminal.innerHTML += "<p>🧠: A entrada foi reconhecida. Bem-vindo ao Núcleo.</p>";
+        localStorage.setItem("nivel5", "concluido");
+        setTimeout(() => {
+          window.location.href = "nivel-6.html";
+        }, 3000);
+      } else {
+        terminal.innerHTML += "<p>🧠: Não... isso não é parte de mim.</p>";
+      }
+
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+  </script>
+</body>
+</html>

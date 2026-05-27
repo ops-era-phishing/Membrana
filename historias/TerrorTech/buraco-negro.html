@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at center, #000 0%, #050505 100%);
+      color: #ccc;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: background 10s ease-in-out;
+    }
+
+    .conteudo {
+      text-align: center;
+      opacity: 1;
+      animation: fadeout 15s forwards;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1em;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeout {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes collapse {
+      0% { transform: scale(1); }
+      100% { transform: scale(0); }
+    }
+
+    .collapse {
+      animation: collapse 8s forwards ease-in;
+    }
+
+    #glitchline {
+      color: #ff0066;
+      margin-top: 20px;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="conteudo" id="conteudo">
+    <h1>Você sumiu.</h1>
+    <p>A instância foi encerrada. Seu código não é mais reconhecido por este universo.</p>
+    <p id="glitchline">ERRO_FATAL: entidade_void_🧠_não_detectada</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.body.style.background = "#000";
+      document.getElementById("conteudo").classList.add("collapse");
+    }, 16000);
+
+    setTimeout(() => {
+      document.body.innerHTML = ""; // tela preta total
+    }, 24000);
+  </script>
+</body>
+</html>

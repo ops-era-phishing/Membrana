@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>espelho.html</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #ffffff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      color: #ff00ff;
+      margin-bottom: 20px;
+    }
+    video, canvas {
+      border: 2px solid #ff00ff;
+      margin: 20px 0;
+    }
+    .alerta {
+      color: #ff3333;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Você está olhando para si mesmo...</h1>
+  <video id="espelho" autoplay playsinline></video>
+  <p class="alerta" id="mensagem">Reflexo estável.</p>  <script>
+    const video = document.getElementById('espelho');
+    const msg = document.getElementById('mensagem');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+        detectarAnomalia();
+      })
+      .catch((err) => {
+        msg.textContent = "Permissão negada. O espelho se recusa a mostrar.";
+      });
+
+    function detectarAnomalia() {
+      setTimeout(() => {
+        msg.textContent = "Anomalia detectada: Reflexo não responde.";
+        document.body.style.backgroundColor = "#111";
+        document.body.style.color = "#ff3333";
+        setTimeout(() => {
+          msg.textContent = "VOCÊ NÃO É O REFLEXO.";
+        }, 4000);
+      }, 6000);
+    }
+  </script></body>
+</html

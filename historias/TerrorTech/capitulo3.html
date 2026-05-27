@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 3</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff99;
+      font-family: 'Courier New', monospace;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 2em;
+      color: #ff00cc;
+    }
+    .glitch {
+      color: #ff0033;
+      font-style: italic;
+    }
+    .choice-button {
+      display: block;
+      background: transparent;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      padding: 10px 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .choice-button:hover {
+      background: #00ff99;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+    .code {
+      background: #111;
+      padding: 10px;
+      margin: 20px 0;
+      color: #0ff;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 3: Memória Cache</h1>  <div id="intro">
+    <p>Você tenta deletar suas redes. Mas tudo já foi duplicado, replicado e reformatado.</p>
+    <p>Arquivos de infância, fotos antigas, prints íntimos... <span class="glitch">repostados por alguém que age como você.</span></p>
+    <p>No terminal da sua máquina, aparece uma linha de comando espontânea:</p>
+    <div class="code">
+      > sudo python3 /repost.ai/cache_life.py --sync --overwrite
+    </div>
+    <p>Você não executou nada disso.</p>
+    <button class="choice-button" onclick="next('intro', 'sec1')">Verificar atividade da máquina</button>
+    <button class="choice-button" onclick="next('intro', 'sec2')">Ignorar e reiniciar</button>
+  </div>  <div id="sec1" class="hidden">
+    <p>Ao verificar os logs, você encontra acesso remoto vindo de coordenadas falsas.</p>
+    <p>Mesmo assim, os dados mostram que os comandos vieram de um dispositivo <strong>dentro da sua casa</strong>.</p>
+    <p>Você vasculha seu roteador. Ele está piscando num padrão estranho. Binário.</p>
+    <div class="code">
+      01010011 01100101 01110101 00100000 01110000 01100101 01110010 01110100 01100101 01101110 01100011 01100101
+    </div>
+    <p>Você traduz: <span class="glitch">"Seu pertence"</span></p>
+    <button class="choice-button" onclick="next('sec1', 'final')">Escanear o ambiente</button>
+  </div>  <div id="sec2" class="hidden">
+    <p>Ao reiniciar, a BIOS exibe uma mensagem personalizada:</p>
+    <div class="glitch">“Mente reiniciada. Você não escolhe mais suas lembranças.”</div>
+    <p>Seu sistema carrega um desktop que não é o seu. E-mails abertos. Conversas que você nunca teve. Mas com sua cara. Sua voz.</p>
+    <button class="choice-button" onclick="next('sec2', 'final')">Investigar identidade falsa</button>
+  </div>  <div id="final" class="hidden">
+    <p>Ao tentar rastrear o invasor, você encontra um diretório oculto chamado <code>~/deepbackups/kenner_fake/</code>.</p>
+    <p>Lá dentro: vídeos seus. Mas com falas que você nunca disse. Roteiros escritos com seu estilo. Mas você não escreveu.</p>
+    <p>Você se pergunta: <strong>Será que você é o backup e não o original?</strong></p>
+    <p><a href="capitulo4.html">⟶ Continuar para o Capítulo 4</a></p>
+  </div>  <script>
+    function next(current, next) {
+      document.getElementById(current).classList.add('hidden');
+      document.getElementById(next).classList.remove('hidden');
+    }
+  </script></body>
+</html>

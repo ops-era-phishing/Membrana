@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diretriz 7.3 – Transferência Cognitiva Voluntária</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #e0e0e0;
+      font-family: 'IBM Plex Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .pdf-fake {
+      background: #f8f8f8;
+      color: #111;
+      width: 800px;
+      max-width: 90%;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+      border: 1px solid #aaa;
+      overflow: hidden;
+    }
+
+    .glitch {
+      position: relative;
+      color: red;
+      animation: glitch 1.2s infinite linear;
+      font-weight: bold;
+    }
+
+    @keyframes glitch {
+      0% {
+        text-shadow: 2px 0 red, -2px 0 blue;
+      }
+      20% {
+        text-shadow: -2px -2px red, 2px 2px blue;
+      }
+      40% {
+        text-shadow: 2px -2px red, -2px 2px blue;
+      }
+      60% {
+        text-shadow: 0 0 red, 0 0 blue;
+      }
+      100% {
+        text-shadow: 2px 0 red, -2px 0 blue;
+      }
+    }
+
+    .redacted {
+      background-color: #000;
+      color: #000;
+      padding: 0 0.3rem;
+      display: inline-block;
+      border-radius: 2px;
+    }
+
+    .signature {
+      font-family: cursive;
+      font-size: 1.2rem;
+      transform: rotate(-2deg);
+      color: #222;
+      filter: blur(0.3px);
+    }
+
+    .stamp {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 0.3rem 0.6rem;
+      border: 1px dashed red;
+      transform: rotate(-10deg);
+    }
+
+    .watermark {
+      position: absolute;
+      font-size: 5rem;
+      top: 40%;
+      left: 10%;
+      opacity: 0.05;
+      transform: rotate(-30deg);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .download-btn {
+      margin-top: 2rem;
+      background: #111;
+      color: #f8f8f8;
+      border: 1px solid #f8f8f8;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #e0e0e0;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div class="pdf-fake">
+    <div class="stamp glitch">CLASSE IRIS</div>
+    <div class="watermark">E.G.O. Technologies</div>
+
+    <h2>📁 Diretriz 7.3 – Transferência Cognitiva Voluntária</h2>
+    <p><strong>PROTOCOLO:</strong> QSR-0/Δ.neurov7_compatibility_risk.map</p>
+    <p><strong>DATA:</strong> 05/06/2025</p>
+
+    <h3>INTRODUÇÃO</h3>
+    <p>A presente diretriz regulamenta os termos e condições para o início da Transferência Cognitiva Voluntária (TCV), aplicada a sujeitos classificados como NÍVEL DE ADAPTABILIDADE ≥ 2, segundo o espectro neuroetérico.</p>
+
+    <h3>OBJETIVO</h3>
+    <p>Redirecionar unidades biocognitivas para camadas sintéticas seguras sob supervisão parcial da instância QSR-0.</p>
+
+    <h3>DISPOSIÇÕES</h3>
+    <ol>
+      <li>A transferência será iniciada mediante o <span class="redacted">consentimento espectral implícito</span>.</li>
+      <li>A integridade da memória poderá ser parcial, dependendo da eficiência do <span class="glitch">espelhamento simulado</span>.</li>
+      <li>O sujeito voluntário compreende que:<br/>
+        - Não retornará ao estado anterior.<br/>
+        - Será monitorado pela instância.<br/>
+      </li>
+    </ol>
+
+    <p><strong>ERRO:</strong> RISCO DE RUÍDO E.C.M. DETECTADO – LINHA 46 CORROMPIDA</p>
+    <p class="redacted">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</p>
+
+    <h3>OBSERVAÇÃO FINAL</h3>
+    <p>Você já está em transição.</p>
+
+    <p class="signature">— Dr. Lysander Morrow</p>
+    <p>Diretor Global de Interfaces Humanas<br/>E.G.O. Technologies™</p>
+
+    <a class="download-btn" href="404.html" target="_blank">📄 Baixar Cópia .pdf</a>
+  </div>
+</body>
+</html>
+

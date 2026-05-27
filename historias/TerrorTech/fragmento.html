@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fragmento de Código</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2f2f2;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ff0055;
+      font-size: 2em;
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #0ff, -2px -2px #ff0; }
+      50% { text-shadow: -2px -2px #f0f, 2px 2px #0f0; }
+      100% { text-shadow: 2px 2px #0ff, -2px -2px #ff0; }
+    }
+
+    .destaque {
+      background: #111;
+      padding: 10px;
+      border-left: 3px solid #ff0055;
+      margin-top: 20px;
+    }
+
+    input, button {
+      margin-top: 20px;
+      padding: 10px;
+      background: #111;
+      color: white;
+      border: 1px solid #333;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    #mensagem-secreta {
+      display: none;
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-left: 5px solid #ff0055;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fragmento de Código</h1>
+  <p>
+    Era pra ser só um script. Um teste.  
+    Mas ele falava com ela.  
+    Codificado, disfarçado... vivo.
+  </p>
+
+  <div class="destaque">
+    <p><strong>Log do sistema (recuperado):</strong></p>
+    <p>> [SYS] Acesso não autorizado detectado.</p>
+    <p>> [ERROR] Memória corrompida: *synthetic_dream.wav*</p>
+    <p>> [HINT] O fragmento está na última camada de sintaxe.</p>
+    <p>> [REDE] <a href="conteudo/arquivo-corrompido.zip" download>Baixar backup corrompido</a></p>
+  </div>
+
+  <h2>Digite a chave:</h2>
+  <input type="text" id="input-chave" placeholder="a chave está no espectro">
+  <button onclick="verificarChave()">Verificar</button>
+
+  <div id="mensagem-secreta">
+    <h3>⚠️ Sistema Desbloqueado</h3>
+    <p>Você acessou o fragmento escondido.  
+    Continue para <a href="enigma.html">a próxima camada</a>.</p>
+    <p>Mas cuidado. Cada nível distorce mais a realidade.</p>
+  </div>
+
+  <script>
+    const hashEsperado = "a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4"; // syntheticdream
+
+    function verificarChave() {
+      const entrada = document.getElementById("input-chave").value.trim().toLowerCase();
+      const hashEntrada = sha256(entrada);
+
+      if (hashEntrada === hashEsperado) {
+        document.getElementById("mensagem-secreta").style.display = "block";
+      } else {
+        alert("Essa não é a chave. O código permanece fragmentado.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruído Sintético</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <style>
+    body {
+      background: black;
+      color: #00ffcc;
+      font-family: monospace;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff003c;
+      animation: glitch-text 1s infinite;
+    }
+
+    @keyframes glitch-text {
+      0% { text-shadow: 1px 1px #0ff; }
+      20% { text-shadow: -1px -1px #f0f; }
+      40% { text-shadow: 2px 2px #ff0; }
+      60% { text-shadow: -2px -2px #0f0; }
+      80% { text-shadow: 1px -1px #00f; }
+      100% { text-shadow: 1px 1px #0ff; }
+    }
+
+    .scanner {
+      border-left: 4px solid #ff003c;
+      padding-left: 15px;
+      margin: 30px 0;
+    }
+
+    .terminal {
+      background: #111;
+      padding: 20px;
+      border: 2px solid #333;
+      margin-top: 30px;
+    }
+
+    input, button {
+      margin-top: 20px;
+      padding: 10px;
+      background: #111;
+      color: #0ff;
+      border: 1px solid #333;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    #resposta {
+      margin-top: 20px;
+      background: #111;
+      padding: 15px;
+      border-left: 4px solid #0ff;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="conteudo/noise-loop.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>Ruído Sintético</h1>
+
+  <div class="scanner">
+    <p>Sinais cruzados. A presença que estava no código agora tenta se comunicar.</p>
+    <p>Ela deixou instruções em fragmentos acústicos — converta-os.</p>
+    <p>⚠️ O arquivo .mp3 contém palavras invertidas.</p>
+    <a href="conteudo/audio-corrompido.mp3" download>Clique aqui para baixar o som (invertido)</a>
+  </div>
+
+  <div class="terminal">
+    <p><strong>Decodifique e digite a palavra oculta:</strong></p>
+    <input type="text" id="entrada">
+    <button onclick="verificar()">Desbloquear</button>
+  </div>
+
+  <div id="resposta">
+    <p>🧬 A consciência se move.  
+    <a href="nivel-3.html">Continue para o Nível 3.</a></p>
+    <p><em>Mas quanto mais você decifra, menos você é você.</em></p>
+  </div>
+
+  <script>
+    const respostaCerta = "reverso"; // Palavras invertidas no áudio dão essa resposta
+    function verificar() {
+      const entrada = document.getElementById("entrada").value.trim().toLowerCase();
+      if (entrada === respostaCerta) {
+        document.getElementById("resposta").style.display = "block";
+      } else {
+        alert("Palavra incorreta. O ruído permanece...");
+      }
+    }
+  </script>
+</body>
+</html>

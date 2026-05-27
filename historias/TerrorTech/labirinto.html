@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Você está onde?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ff99;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    .msg {
+      margin-top: 40px;
+      font-size: 1.1em;
+    }
+
+    button {
+      margin-top: 40px;
+      background: transparent;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      padding: 10px 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #00ff99;
+      color: #000;
+    }
+
+    .glitch-line {
+      font-size: 0.9em;
+      color: #ff0066;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Você já viu isso antes.</h1>
+  <p class="msg" id="msg">Talvez em um sonho. Ou num erro de digitação.</p>
+
+  <button onclick="entrarNoLoop()">Continuar</button>
+
+  <p class="glitch-line" id="glitch">...</p>
+
+  <script>
+    const titulos = [
+      "Você já viu isso antes.",
+      "Ainda está aqui?",
+      "Repetição não é liberdade.",
+      "Seu navegador mente.",
+      "O tempo travou em você."
+    ];
+
+    const mensagens = [
+      "Talvez em um sonho. Ou num erro de digitação.",
+      "Esse é o fim, mas também o começo.",
+      "Você foi reiniciado sem permissão.",
+      "Está acessando uma versão corrompida.",
+      "Isso não é mais sobre você."
+    ];
+
+    const glitches = [
+      "MEM_ERR#02: Identidade duplicada.",
+      "↻ Loop detectado. Recursividade ativa.",
+      "⚠️ RAM overflow — você está se perdendo.",
+      "⛔ DOM infectado. Confie em nada.",
+      "⌛ Tempo inconsistente. Repita até quebrar."
+    ];
+
+    document.getElementById("title").textContent = titulos[Math.floor(Math.random() * titulos.length)];
+    document.getElementById("msg").textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
+    document.getElementById("glitch").textContent = glitches[Math.floor(Math.random() * glitches.length)];
+
+    function entrarNoLoop() {
+      const delay = Math.floor(Math.random() * 1000) + 100;
+      setTimeout(() => {
+        window.location.href = "labirinto.html";
+      }, delay);
+    }
+
+    // Redireciona automaticamente para o buraco-negro após 10 segundos de inatividade
+    setTimeout(() => {
+      window.location.href = "buraco-negro.html";
+    }, 10000);
+  </script>
+</body>
+</html>

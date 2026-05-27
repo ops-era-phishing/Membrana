@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio dos Hashes</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.6;
+      padding: 2rem;
+    }h1, h2, h3 {
+  color: #ff0044;
+}
+
+.hash-desafio {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #ff0044;
+}
+
+code {
+  background: #111;
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  color: #ff0044;
+}
+
+.nivel {
+  background: #111;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+}
+
+.copy {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <h1>🔐 Desafio dos Hashes</h1>
+  <p>Você chegou a um ponto em que a lógica precisa ser decodificada. Abaixo estão frases-chaves que você precisará converter para <strong>SHA-256</strong>. Use essas hashes para desbloquear novos níveis na simulação.</p>  <div class="hash-desafio">
+    <h2>Nível 1</h2>
+    <p><strong>Frase:</strong> <code>Você não deveria ter clicado.</code></p>
+    <p>Converta essa frase para SHA-256 usando:</p>
+    <code>echo -n "Você não deveria ter clicado." | sha256sum</code>
+  </div>  <div class="hash-desafio">
+    <h2>Nível 2</h2>
+    <p><strong>Frase:</strong> <code>A mentira virou memória.</code></p>
+  </div>  <div class="hash-desafio">
+    <h2>Nível 3</h2>
+    <p><strong>Frase:</strong> <code>Resistir à definição.</code></p>
+  </div>  <div class="hash-desafio">
+    <h2>Nível 4</h2>
+    <p><strong>Frase:</strong> <code>404: Realidade não encontrada.</code></p>
+  </div>  <h2>🚀 Como avançar nos níveis?</h2>
+  <div class="nivel">
+    <h3>Passo 1:</h3>
+    <p>Copie a frase do desafio.</p>
+    <h3>Passo 2:</h3>
+    <p>Use um gerador SHA-256 (CLI ou site confiável como <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank">esse</a>).</p>
+    <h3>Passo 3:</h3>
+    <p>Insira o hash obtido no campo do nível correspondente no site (ou código oculto da história ARG).</p>
+    <h3>Passo 4:</h3>
+    <p>Se estiver correto, o próximo nível desbloqueia automaticamente ou aparece uma pista escondida na tela.</p>
+  </div>  <div class="copy">
+    <p>Criptografado por <strong>o núcleo</strong> — apenas os conscientes continuam.</p>
+  </div>
+</body>
+</html>

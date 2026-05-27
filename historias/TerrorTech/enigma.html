@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enigma — TerrorTech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2f2f2;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 30px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      animation: glitch 2s infinite;
+      color: #ff0055;
+      margin-bottom: 0.5em;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00f, -2px -2px #0ff; }
+      50% { text-shadow: -2px -2px #f0f, 2px 2px #0f0; }
+      100% { text-shadow: 2px 2px #00f, -2px -2px #0ff; }
+    }
+
+    .tutorial {
+      background: #111;
+      padding: 1.5rem;
+      border-left: 4px solid #ff0055;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 300px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff0055;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cc0033;
+    }
+
+    #mensagem-secreta {
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-left: 4px solid #ff0055;
+      display: none;
+      max-width: 600px;
+      font-size: 0.95rem;
+    }
+
+    .dica {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    .start-btn {
+      background: #0f0f0f;
+      border: 2px dashed #ff0055;
+      color: #ff0055;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .start-btn:hover {
+      background: #ff0055;
+      color: #0f0f0f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Desbloqueie o Enigma</h1>
+
+  <div class="tutorial">
+    <p><strong>📜 Sobre o Desafio:</strong></p>
+    <p>Você está entrando no universo da <em>TerrorTech</em>, onde cada fragmento da história esconde códigos, mensagens e instruções ocultas.</p>
+    <p>Sua missão: usar a sua percepção (e paranoia saudável 😅) para encontrar palavras-chave escondidas ao longo dos capítulos.</p>
+
+    <p><strong>🧠 Como Funciona:</strong></p>
+    <ul>
+      <li>Leia os capítulos no site, atentamente.</li>
+      <li>Anote frases e palavras que aparecem repetidamente ou com peso emocional.</li>
+      <li>Digite-as aqui para testar. Se for uma das palavras certas, você desbloqueia conteúdo exclusivo.</li>
+    </ul>
+
+    <p><strong>💡 Dica:</strong> A primeira chave foi sussurrada na última linha da história "<em>Fragmento de Código</em>".</p>
+  </div>
+
+  <input type="text" id="input-chave" placeholder="ex: syntheticdream">
+  <button onclick="verificarChave()">Verificar</button>
+  <p class="dica">(Dica bônus: olhe nos glitches e nos padrões quebrados...)</p>
+
+  <div id="mensagem-secreta">
+    <h2>🧠 Segredo Desbloqueado</h2>
+    <p>Você acessou o <strong>backup mental</strong> do experimento.</p>
+    <p><a href="backup-fragmento.zip" download>📂 Baixe o arquivo secreto</a></p>
+    <p>⚠️ Cuidado: há algo lá que talvez não devesse ser recuperado...</p>
+  </div>
+
+  <button class="start-btn" onclick="window.location.href='index.html'">👁 Começar o Desafio</button>
+
+  <script>
+    const hashEsperado = "a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4"; // syntheticdream
+
+    function verificarChave() {
+      const entrada = document.getElementById("input-chave").value.trim();
+      const hashEntrada = sha256(entrada);
+
+      if (hashEntrada === hashEsperado) {
+        document.getElementById("mensagem-secreta").style.display = "block";
+      } else {
+        alert("Essa não é a chave correta. O experimento permanece fechado.");
+      }
+    }
+  </script>
+</body>
+</html>

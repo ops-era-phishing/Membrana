@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missões Nível 1 | Floripa RPG</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+        .mission-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            max-width: 90%;
+            width: 400px;
+        }
+        .mission-popup h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .mission-popup img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .mission-popup button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <div id="missionPopup" class="mission-popup">
+        <h3 id="popupTitle">Missão</h3>
+        <div id="popupContent"></div>
+        <button id="closePopup">Fechar</button>
+    </div>
+    
+    <button id="backBtn" class="back-btn">Voltar</button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inicialização do mapa
+        const map = L.map('map').setView([-27.5995, -48.5560], 13);
+        
+        // Camada do mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Dados das missões
+        const missions = [
+            {
+                title: "Aterro da Baía Sul",
+                coords: [-27.600556, -48.553889],
+                description: "Intervenção na costa iniciada nas décadas de 1960-1970",
+                clue: `
+                    <img src="https://maps.googleapis.com/maps/api/streetview?size=400x200&location=-27.600556,-48.553889&fov=90&heading=0&pitch=0&key=YOUR_API_KEY" alt="Vista atual">
+                    <p><strong>Documento encontrado:</strong> Foto aérea de 1972 mostrando o início das obras.</p>
+                    <p>Arquivo Público de Santa Catarina.</p>
+                `
+            },
+            {
+                title: "Ponte Colombo Salles",
+                coords: [-27.600000, -48.566667],
+                description: "Inaugurada em 1975, segunda ligação fixa ilha-continente",
+                clue: `
+                    <img src="https://maps.googleapis.com/maps/api/streetview?size=400x200&location=-27.600000,-48.566667&fov=90&heading=0&pitch=0&key=YOUR_API_KEY" alt="Vista atual">
+                    <p><strong>Documento encontrado:</strong> Recorte de jornal da inauguração em 1975.</p>
+                    <p>Jornal "A Gazeta", 15/03/1975.</p>
+                `
+            }
+        ];
+
+        // Adiciona marcadores
+        missions.forEach(mission => {
+            const marker = L.marker(mission.coords).addTo(map)
+                .bindPopup(`
+                    <b>${mission.title}</b>
+                    <p>${mission.description}</p>
+                    <button onclick="showMission('${mission.title}', \`${mission.clue}\`)" 
+                        style="background:#1a73e8;color:white;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;margin-top:6px">
+                        Escanear TAG
+                    </button>
+                `);
+        });
+
+        // Funções globais
+        window.showMission = (title, content) => {
+            document.getElementById('popupTitle').textContent = title;
+            document.getElementById('popupContent').innerHTML = content;
+            document.getElementById('missionPopup').style.display = 'block';
+            document.getElementById('backBtn').style.display = 'block';
+        };
+
+        document.getElementById('closePopup').addEventListener('click', () => {
+            document.getElementById('missionPopup').style.display = 'none';
+        });
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            // Redirecionar para a página inicial
+            alert('Redirecionando para a página inicial...');
+            // window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

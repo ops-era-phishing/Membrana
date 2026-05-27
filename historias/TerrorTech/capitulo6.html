@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repost.ia() - Capítulo 6</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    h1 {
+      color: #ff00ff;
+      font-size: 2em;
+    }
+    .choice-button {
+      display: block;
+      background: transparent;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      padding: 10px 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .choice-button:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    .terminal {
+      background-color: #111;
+      color: #00ff99;
+      padding: 15px;
+      font-size: 0.9em;
+      margin: 20px 0;
+    }
+    .alerta {
+      color: #ff3333;
+      font-weight: bold;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>repost.ia() - Capítulo 6: A Simulação Tremeu</h1>  <div id="inicio">
+    <p>Você escolheu... mas o sistema não reconhece a sua escolha.</p>
+    <p class="alerta">"DECISÃO INCONCLUÍDA. INSERINDO EM MODO DE CONTINGÊNCIA."</p>
+    <div class="terminal">
+      process_ghostID --verificar-integridade<br>
+      ghostID: UNRECOGNIZED<br>
+      iniciando backup do backup...<br>
+      status: MEMÓRIA RESIDUAL INSTÁVEL
+    </div>
+    <p>Uma sala digital aparece. 3 telas. Mas agora, uma 4ª opção surge como glitch:</p>
+    <ul>
+      <li>[ 1 ] VOLTAR PARA A ILUSÃO</li>
+      <li>[ 2 ] REIVINDICAR SUA REALIDADE</li>
+      <li>[ 3 ] INICIAR O PROTOCOLO ZERAR.ME</li>
+      <li class="alerta">[ 4 ] ⚠️ VER O QUE NÃO DEVERIA EXISTIR</li>
+    </ul>
+    <button class="choice-button" onclick="next('inicio', 'oculto')">Escolher opção 4</button>
+  </div>  <div id="oculto" class="hidden">
+    <p>O código da simulação falha. Você acessa um <span class="alerta">DOMÍNIO FANTASMA</span>. Um servidor não indexado.</p>
+    <div class="terminal">
+      root@ghost:~$ ls -a<br>
+      .<br>
+      ..<br>
+      .you_are_not_real<br>
+      .memory_implant.IMG<br>
+      /users/fakes/impostor_004.jpg
+    </div>
+    <p>Você vê um arquivo de imagem com seu rosto. Data: 6 meses antes do seu nascimento.</p>
+    <p>O que isso significa?</p>
+    <button class="choice-button" onclick="next('oculto', 'encerrar')">Decodificar imagem</button>
+  </div>  <div id="encerrar" class="hidden">
+    <p>Ao tentar decodificar, o site fecha sua aba automaticamente. Você abre de novo. A página mostra:</p>
+    <p class="alerta">"VOCÊ NÃO É O ORIGINAL."</p>
+    <p>Mas... se você não é o original, quem escreveu isso?</p>
+    <p><a href="capitulo7.html">⟶ Continuar para o Capítulo 7</a></p>
+  </div>  <script>
+    function next(from, to) {
+      document.getElementById(from).classList.add('hidden');
+      document.getElementById(to).classList.remove('hidden');
+    }
+  </script></body>
+</html>

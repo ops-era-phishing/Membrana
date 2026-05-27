@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nota Técnica: Silenciamento de Códigos-Memória</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Special+Elite&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto Mono', monospace;
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .container {
+      max-width: 700px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,255,150,0.2);
+      padding: 2rem 3rem;
+      position: relative;
+      border: 1px solid #00ff99;
+      user-select: none;
+      filter: drop-shadow(0 0 4px #00ff99);
+      animation: subtleGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes subtleGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0,255,150,0.2); }
+      50% { box-shadow: 0 0 25px rgba(0,255,150,0.6); }
+    }
+
+    h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: 2.5rem;
+      color: #00ff99;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      border-bottom: 2px solid #00ff99;
+      padding-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 1rem;
+      font-style: italic;
+      color: #55ffaa;
+      margin-bottom: 2rem;
+      letter-spacing: 0.07em;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    /* Texto riscado à mão (com linha torta) */
+    .hand-strike {
+      position: relative;
+      display: inline-block;
+      color: #888;
+    }
+
+    .hand-strike::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 55%;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 0, 0, 0.7);
+      transform: rotate(-7deg);
+      pointer-events: none;
+      border-radius: 1px;
+      animation: flickerStrike 3s infinite;
+    }
+
+    @keyframes flickerStrike {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Anotações manuais */
+    .note {
+      font-family: 'Special Elite', cursive;
+      color: #ff3366;
+      font-size: 1rem;
+      border-left: 3px solid #ff3366;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+      user-select: text;
+      opacity: 0.85;
+    }
+
+    /* Destaque técnico */
+    code {
+      background: #003322;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: #00ff99;
+      font-weight: 600;
+    }
+
+    /* Footer com efeito sutil */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #007733aa;
+      font-style: italic;
+      user-select: none;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .note {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="container" role="main" aria-label="Nota Técnica">
+    <h1>Nota Técnica:</h1>
+    <h1>Silenciamento de <br>Códigos-Memória</h1>
+    <h2>Descreve a técnica de apagar memórias indesejadas via padrão de áudio e luz</h2>
+
+    <p>O processo utiliza a combinação de <code>pulsos luminosos modulados</code> e <code>frequências sonoras específicas</code> para induzir o <span class="hand-strike">apagamento seletivo</span> das <em>tramas neurais</em> responsáveis pelo armazenamento de memórias alvo.</p>
+
+    <p>Este método age diretamente sobre as <code>sinapses neuroquânticas</code> garantindo que <span class="hand-strike">informações conflitantes ou sensíveis</span> sejam neutralizadas, impedindo sua recuperação mesmo após tentativas de <code>reconstrução cognitiva</code>.</p>
+
+    <p class="note">Anotação: É imprescindível monitorar os efeitos colaterais relacionados à estabilidade emocional e à coesão identitária do indivíduo submetido.</p>
+
+    <p>Aplicações práticas incluem o uso em <code>realocações cognitivas</code> voluntárias ou como medida de <em>controle de dissidentes</em> com perfis de resistência elevados.</p>
+
+    <p class="note">Observação: Algumas falhas recentes indicam a possibilidade de <span class="hand-strike">resquícios persistentes</span> que podem desencadear <em>rebelões internas</em> no sistema neural.</p>
+
+    <footer>
+      © E.G.O. Technologies — Documento confidencial <br/>
+      Para uso exclusivo do departamento de interfaces neuroéticas
+    </footer>
+  </article>
+</body>
+</html>
+
