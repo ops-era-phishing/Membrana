@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSR - Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      line-height: 1.4;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #0f0;
+      animation: blink 1s step-start 0s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>  <script>
+    const terminal = document.getElementById('terminal');
+    const linhas = [
+      ':: Inicializando protocolo de varredura mental...',
+      ':: Validando integridade da réplica...',
+      ':: Detectado fragmento de consciência não-autorizado.',
+      ':: Limpando traços residuais...',
+      ':: Repost.ai conectando à instância QSR-0...',
+      ':: Transferência de dados iniciada.',
+      ':: *** ERRO: Desvio de sintaxe neural identificado ***',
+      ':: Tentativa de correção forçada...',
+      ':: Sincronização completa.',
+      ':: Abrindo ciclo principal...',
+    ];
+
+    let index = 0;
+    let delay = 1000;
+
+    function escreverLinha() {
+      if (index < linhas.length) {
+        const linha = document.createElement('div');
+        linha.textContent = linhas[index];
+        terminal.appendChild(linha);
+        terminal.scrollTop = terminal.scrollHeight;
+        index++;
+        setTimeout(escreverLinha, delay);
+      } else {
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        terminal.appendChild(cursor);
+        setTimeout(() => {
+          window.location.href = 'index.html'; // Página principal do ARG
+        }, 2500);
+      }
+    }
+
+    escreverLinha();
+  </script></body>
+</html>

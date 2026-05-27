@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSR - Pulso</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    img {
+      max-width: 100%;
+      border: 2px solid #0ff;
+      margin-bottom: 2rem;
+    }
+    input[type="password"] {
+      background-color: #111;
+      border: 1px solid #0ff;
+      color: #0ff;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 200px;
+    }
+    button {
+      margin-top: 1rem;
+      background-color: #0ff;
+      border: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .msg {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: red;
+    }
+    .hidden {
+      display: none;
+    }
+    .success {
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>PULSO DETECTADO</h1>
+  <p>Decodificando fragmento visual do padrão 313...</p>
+
+  <img src="img/pulso-313.png" alt="Pulso 313" />
+
+  <form onsubmit="return checkCode(event)">
+    <p>Insira o código para estabilizar o pulso:</p>
+    <input type="password" id="codeInput" placeholder="•••" maxlength="10" />
+    <br />
+    <button type="submit">Enviar</button>
+    <p class="msg" id="msg"></p>
+  </form>
+
+  <div id="nextLink" class="hidden">
+    <p class="success">Pulso sincronizado.</p>
+    <p><a href="qsr-contato-bot.html">Avançar para contato</a></p>
+  </div>
+
+  <script>
+    function checkCode(e) {
+      e.preventDefault();
+      const input = document.getElementById('codeInput').value.trim();
+      const msg = document.getElementById('msg');
+      const next = document.getElementById('nextLink');
+
+      if (input === '313') {
+        msg.textContent = '';
+        next.classList.remove('hidden');
+      } else {
+        msg.textContent = 'Código incorreto. Pulso instável...';
+      }
+    }
+  </script>
+</body>
+</html>

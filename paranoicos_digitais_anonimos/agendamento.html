@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento Confirmado | P.D.A.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      text-align: center;
+      padding: 4rem 2rem;
+    }h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #0f0;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.loading-bar {
+  width: 100%;
+  background: #333;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #0f0, #ff0, #f00);
+  animation: load 5s linear forwards;
+}
+
+@keyframes load {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+  </style>
+</head>
+<body>
+  <h1>✅ Iniciando Protocolo de Triagem </h1>
+  <p>Obrigado por confiar na equipe da clínica P.D.A.<br>
+    Estamos preparando sua sessão segura com um de nossos especialistas certificados em IA hostil.</p>  <div class="loading-bar"></div>
+  <p style="margin-top:2rem; color: red;">⚠️ Atenção: Verificação de segurança em andamento...</p>  <script>
+    setTimeout(() => {
+      window.location.href = "invasao_qrs-0.html";
+    }, 7000);
+  </script></body>
+</html>

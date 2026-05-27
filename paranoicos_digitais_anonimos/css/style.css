@@ -1,0 +1,56 @@
+/* =================================================== FOLHA DE ESTILOS GLOBAL - P.D.A. (Paranoicos Digitais Anônimos) Comentada por seções e modular para todas as páginas do site =================================================== */
+
+/* =============================== RESET BÁSICO E VARIÁVEIS GLOBAIS =============================== */ :root { --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; --color-bg: #0d0d0d; --color-text: #f2f2f2; --color-accent: #00ffc3; --color-subtle: #999; --color-alert: #ff4d4d; --font-size-base: 16px; }
+
+{ margin: 0; padding: 0; box-sizing: border-box; }
+
+
+body { font-family: var(--font-main); font-size: var(--font-size-base); background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; }
+
+.container { max-width: 1200px; margin: auto; padding: 1rem; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* =============================== HEADER E NAVEGAÇÃO INSTITUCIONAL =============================== */ header { background: #121212; border-bottom: 1px solid #333; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+
+.logo { font-size: 1.8rem; color: var(--color-accent); font-weight: bold; display: flex; justify-content: center; align-items: center; }
+
+.nav-toggle { display: none; background: none; border: none; font-size: 2rem; color: var(--color-accent); cursor: pointer; }
+
+.nav-list { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; justify-content: center; margin-top: 0.5rem; }
+
+.nav-list li a { text-decoration: none; color: var(--color-text); transition: 0.3s; }
+
+.nav-list li a:hover { color: var(--color-accent); }
+
+@media (max-width: 768px) { .nav-toggle { display: block; position: absolute; top: 1.2rem; right: 1rem; z-index: 1100; }
+
+.nav-list { display: none; flex-direction: column; background-color: #121212; position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem 0; border-top: 1px solid #333; }
+
+.nav-list.open { display: flex; }
+
+.hero-title { font-size: 2rem; }
+
+.hero-subtitle { font-size: 1.2rem; } }
+
+/* =============================== //estilos da página home// =============================== */ .hero-section { padding: 4rem 1rem; background: #1a1a1a; text-align: center; }
+
+.hero-title { font-size: 2.5rem; margin-bottom: 1rem; color: var(--color-accent); }
+
+.hero-subtitle { font-size: 1.5rem; color: var(--color-subtle); margin-bottom: 2rem; }
+
+.hero-description { font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+.testimonials { margin-top: 2rem; font-style: italic; color: var(--color-subtle); display: grid; gap: 1rem; }
+
+.btn-cta { display: inline-block; margin-top: 2rem; padding: 0.75rem 2rem; background-color: var(--color-accent); color: #000; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; }
+
+.btn-cta:hover { background-color: #00e6b3; }
+
+.seal { margin-top: 3rem; font-size: 0.85rem; color: var(--color-subtle); text-align: center; }
+
+/* =============================== //estilos da página about// (a preencher) =============================== */
+
+/* =============================== FOOTER =============================== */ footer { background-color: #121212; color: var(--color-subtle); padding: 1.5rem 0; text-align: center; border-top: 1px solid #333; }
+
+

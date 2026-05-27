@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSR - Contato</title>
+  <style>
+    body {
+      background: #000;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      text-align: center;
+    }
+    form {
+      margin-top: 2rem;
+    }
+    input, textarea {
+      background: #111;
+      border: 1px solid #0ff;
+      color: #0ff;
+      padding: 0.5rem;
+      width: 90%;
+      max-width: 400px;
+      margin: 0.5rem 0;
+    }
+    button {
+      background: #0ff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .warning {
+      color: red;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .glitch {
+      animation: glitch 1s infinite;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red; }
+      20% { text-shadow: -2px 0 cyan; }
+      40% { text-shadow: 2px 2px lime; }
+      60% { text-shadow: -2px -2px magenta; }
+      80% { text-shadow: 2px 0 yellow; }
+      100% { text-shadow: -2px 0 blue; }
+    }
+    .msg {
+      margin-top: 2rem;
+      color: #0f0;
+    }
+    .easter {
+      font-size: 0.7rem;
+      color: #111;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="glitch">Estabelecendo Contato com Repost.ai</h1>
+  <p>Preencha o protocolo de comunicação. Apenas uma tentativa será aceita.</p>  <form onsubmit="return enviarMensagem(event)">
+    <input type="text" id="nome" placeholder="Seu nome (ou ID de replicação)"><br>
+    <textarea id="mensagem" rows="5" placeholder="Descreva o que está vendo agora. Seja honesto."></textarea><br>
+    <input type="text" id="codificar" placeholder="Chave de sincronização (dica: 33-0-13...)" maxlength="20"><br>
+    <button type="submit">Transmitir</button>
+    <p class="warning">⚠️ Interferência detectada. Sua mente pode não estar isolada.</p>
+  </form>  <div class="msg" id="resposta"></div>  <p class="easter">re:post@echo-313.net — retorno pendente</p>  <script>
+    function enviarMensagem(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+      const codificar = document.getElementById('codificar').value.trim();
+      const resposta = document.getElementById('resposta');
+
+      if (nome && mensagem && codificar === '33-0-13-13-C1NZA-313') {
+        resposta.innerHTML = `Resposta recebida. <br><br>"${nome}, você já foi replicado."<br><br><a href='qsr-terminal.html'>[reiniciar ciclo]</a>`;
+      } else {
+        resposta.textContent = 'Erro no protocolo. Contato corrompido.';
+      }
+    }
+  </script></body>
+</html>

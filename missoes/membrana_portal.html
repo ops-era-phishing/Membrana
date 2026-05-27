@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso à Membrana</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.8rem;
+      color: #0ff;
+      margin-bottom: 2rem;
+    }
+    .terminal {
+      background: #111;
+      border: 2px solid #0f0;
+      padding: 1rem;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      overflow-y: auto;
+      box-shadow: 0 0 20px #0f0;
+    }
+    .input-area {
+      margin-top: 1rem;
+      width: 100%;
+      display: flex;
+    }
+    .input-area input {
+      flex: 1;
+      padding: 0.5rem;
+      background: #000;
+      color: #0f0;
+      border: 1px solid #0f0;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .input-area button {
+      padding: 0.5rem 1rem;
+      background: #0f0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .glitch {
+      animation: glitch 1s infinite;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -2px); }
+      80% { transform: translate(2px, 1px); }
+      100% { transform: translate(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="glitch">Acesso Restrito à Membrana</h1>  <div class="terminal" id="terminal">
+    <p>/// Iniciando protocolo de verificação QSR-0...</p>
+    <p>/// Digite o comando de entrada para acessar a Membrana.</p>
+  </div>  <div class="input-area">
+    <input type="text" id="commandInput" placeholder="Digite o comando...">
+    <button onclick="processCommand()">Enviar</button>
+  </div>  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('commandInput');
+
+    function processCommand() {
+      const cmd = input.value.trim().toLowerCase();
+      appendToTerminal(`> ${cmd}`);
+      input.value = '';
+
+      if (cmd === 'acessar membrana') {
+        appendToTerminal('Acesso autorizado. Redirecionando...');
+        setTimeout(() => {
+          window.location.href = 'membrana_portal.html';
+        }, 2000);
+      } else if (cmd === 'ajuda') {
+        appendToTerminal('Comando válido: acessar membrana');
+      } else {
+        appendToTerminal('Comando não reconhecido. Digite "ajuda" para instruções.');
+      }
+    }
+
+    function appendToTerminal(text) {
+      const line = document.createElement('p');
+      line.textContent = text;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') processCommand();
+    });
+  </script></body>
+</html>

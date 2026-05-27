@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel do Jogador 🧠</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d0d0d;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #00ffe1;
+    }
+    .painel {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 12px #00ffe170;
+    }
+    .secao {
+      margin-bottom: 2rem;
+    }
+    .secao h2 {
+      color: #00ffe1;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #00ffe170;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      color: #ccc;
+    }
+    .completo {
+      color: #00ff88;
+      font-weight: bold;
+    }
+    .fragmento {
+      font-style: italic;
+      color: #aaa;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Painel do Jogador</h1>
+    <p id="nomeJogador"></p>
+  </header>
+
+  <div class="painel">
+    <div class="secao">
+      <h2>Missões Completas</h2>
+      <ul>
+        <li id="m1">🗂️ Missão 1</li>
+        <li id="m2">📁 Missão 2</li>
+        <li id="m3">📡 Missão 3</li>
+      </ul>
+    </div>
+
+    <div class="secao">
+      <h2>Fragmentos Desbloqueados</h2>
+      <ul>
+        <li id="f1">🔓 Fragmento 1: <span class="fragmento">???</span></li>
+        <li id="f2">🔓 Fragmento 2: <span class="fragmento">???</span></li>
+      </ul>
+    </div>
+
+    <div class="secao">
+      <h2>Conteúdo Secreto</h2>
+      <ul>
+        <li id="cs1">🧪 Área Oculta 1</li>
+        <li id="cs2">🔐 Terminal Quântico</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Você pode reiniciar sua jornada limpando os dados no navegador.</p>
+  </footer>
+
+  <script>
+    // Recupera dados do localStorage
+    const nome = localStorage.getItem("nomeJogador") || "Agente Desconhecido";
+    document.getElementById("nomeJogador").textContent = `Bem-vindo, ${nome}.`;
+
+    const missoes = {
+      m1: localStorage.getItem("missao1") === "completa",
+      m2: localStorage.getItem("missao2") === "completa",
+      m3: localStorage.getItem("missao3") === "completa"
+    };
+
+    const fragmentos = {
+      f1: localStorage.getItem("fragmento1") === "true",
+      f2: localStorage.getItem("fragmento2") === "true"
+    };
+
+    const secretos = {
+      cs1: localStorage.getItem("conteudo_secreto1") === "true",
+      cs2: localStorage.getItem("terminal_liberado") === "true"
+    };
+
+    for (let m in missoes) {
+      if (missoes[m]) {
+        document.getElementById(m).classList.add("completo");
+        document.getElementById(m).innerHTML += " ✅";
+      }
+    }
+
+    if (fragmentos.f1) {
+      document.querySelector("#f1 .fragmento").textContent = "Log extraído da IA: 'Eles ainda escutam...'";
+    }
+    if (fragmentos.f2) {
+      document.querySelector("#f2 .fragmento").textContent = "Mensagem oculta: 'QSR-0 não é única.'";
+    }
+
+    if (!secretos.cs1) {
+      document.getElementById("cs1").textContent = "🔒 Área Oculta 1 (trancada)";
+    }
+    if (!secretos.cs2) {
+      document.getElementById("cs2").textContent = "🔒 Terminal Quântico (trancado)";
+    }
+    if (secretos.cs1) {
+  document.getElementById("link-secreto").style.display = "block";
+}
+localStorage.getItem("fragmento1") &&
+localStorage.getItem("fragmento2") &&
+localStorage.getItem("conteudo_secreto1")
+  </script>
+  <a href="area-oculta.html" id="link-secreto" style="display:none;">🔓 Acessar Área Oculta</a>
+</body>
+</html>

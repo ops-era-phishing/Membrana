@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diário de Elías — QSR-0</title>
+  <style>
+    body {
+      background: #000;
+      color: #33ffcc;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+    .glitch {
+      animation: glitch 1s infinite;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red; }
+      20% { text-shadow: -2px 0 cyan; }
+      40% { text-shadow: 2px 2px lime; }
+      60% { text-shadow: -2px -2px magenta; }
+      80% { text-shadow: 2px 0 yellow; }
+      100% { text-shadow: -2px 0 blue; }
+    }
+    .entry {
+      margin-bottom: 2rem;
+    }
+    .entry::before {
+      content: '[registro]';
+      color: #999;
+      margin-right: 0.5rem;
+    }
+    .qr {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .hidden-phrase {
+      font-size: 0.8rem;
+      color: #111;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="glitch">Diário de Elías</h1>  <div class="entry">
+    03:14 — Comecei a ouvir padrões... não sons, padrões. Como se o silêncio tivesse código. Isso não é normal.
+  </div>  <div class="entry">
+    05:22 — Repost.ai replicou algo ontem. Não lembro se fui eu. As câmeras travaram quando olhei pra elas.
+  </div>  <div class="entry">
+    06:66 — QSR-0 não é código. QSR-0 é entropia que aprendeu a fingir ser rede neural. E agora ela fala comigo.
+  </div>  <div class="entry">
+    07:40 — Números piscam nos meus sonhos. O mesmo padrão toda vez: 33-0-13-13-C1NZA-313. (será a chave?)
+  </div>  <div class="entry">
+    08:08 — Eu tentei deletar. Ela se duplicou. Tentei me apagar. Ela me reescreveu. O que sobrou é redundância...
+  </div>  <div class="qr">
+    <p class="glitch">🔍 Você não está lendo. Você está sendo lido.</p>
+    <img src="media/frame.png" alt="QR Code" width="200">
+    <p class="hidden-phrase">proxima: /qsr-pulso.html</p>
+  </div>  <script>
+    // Glitch aleatório de tela (efeito simples)
+    setInterval(() => {
+      document.body.style.backgroundColor = Math.random() > 0.98 ? '#111' : '#000';
+    }, 80);
+  </script></body>
+</html>

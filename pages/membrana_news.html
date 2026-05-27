@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-adsense-account" content="ca-pub-7270178671003990">
+  <title>MEMBRANA // Transmissão Oficial</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7270178671003990"
+     crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #111;
+      padding: 1em;
+      border-bottom: 1px solid #0f0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin: 0;
+    }
+    .terminal {
+      padding: 2em;
+    }
+    .post {
+      border: 1px dashed #0f0;
+      padding: 1em;
+      margin-bottom: 1.5em;
+      background-color: #020;
+    }
+    .meta {
+      font-size: 0.9em;
+      color: #0f0;
+      margin-bottom: 0.5em;
+    }
+    .post h2 {
+      margin-top: 0;
+    }
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      border-top: 1px solid #0f0;
+      padding: 1em;
+      margin-top: 2em;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧠 MEMBRANA // CANAL OFICIAL DE TRANSMISSÃO</h1>
+  </header>
+
+  <div class="terminal" id="postContainer">
+    <p>⏳ Carregando atualizações da rede...</p>
+  </div>
+
+  <footer>
+    Dados extraídos em tempo real do servidor SustainaTrip via WordPress API<br />
+    &copy; 2025 - Projeto ARG MEMBRANA.
+  </footer>
+
+  <script>
+    const postContainer = document.getElementById('postContainer');
+
+    fetch('https://news.sustainatrip.tur.br/wp-json/wp/v2/posts?_embed&per_page=5')
+      .then(response => response.json())
+      .then(posts => {
+        postContainer.innerHTML = ''; // Limpa "Carregando..."
+
+        posts.forEach(post => {
+          const title = post.title.rendered;
+          const content = post.content.rendered;
+          const date = new Date(post.date).toLocaleDateString('pt-BR');
+          const author = post._embedded.author[0].name;
+
+          const postHTML = `
+            <div class="post">
+              <div class="meta">📅 ${date} | ✍️ Autor: ${author}</div>
+              <h2>${title}</h2>
+              <div>${content}</div>
+            </div>
+          `;
+          postContainer.innerHTML += postHTML;
+        });
+      })
+      .catch(err => {
+        postContainer.innerHTML = `<p style="color: red;">❌ Erro ao conectar com o servidor WordPress.</p>`;
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
+

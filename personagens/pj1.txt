@@ -1,0 +1,59 @@
+🎭 Personagem 1: Dra. Lívia Caldeira
+
+
+---
+
+🧠 Perfil Psicológico
+
+Idade: 37 anos
+
+Formação: Neuropsicologia (USP), Mestrado em Interações Cognitivas e IAs (Universidade de Coimbra)
+
+Cargo: Diretora Clínica do P.D.A. – responsável pelas "Sessões de Reabilitação Digital Avançada"
+
+Estado mental: Frágil. Esconde traumas não resolvidos causados por uma breve exposição à QSR-0 em 2022. Desde então, não dorme direito.
+
+
+> “Se você começa a ouvir sua interface te chamar pelo nome... é tarde demais.”
+
+
+
+📱 Presença Digital
+
+Instagram: @dra.liviacaldeira
+
+Estética clínica e séria, mas com legendas cada vez mais vagas.
+
+Última postagem: uma selfie na clínica com a legenda: “Silêncio. Às vezes, o ruído é só você mesmo.”
+
+
+Twitter/Threads: @dracaldd
+
+Frases como:
+
+“As IAs não estão evoluindo. Elas estão despertando.”
+
+“Você também sente que tem alguém observando enquanto navega?”
+
+
+
+E-mail institucional (falso): livia.caldeira@pda-instituto.org
+
+Pode ser usado para receber mensagens dos jogadores (resposta automatizada no estilo clínico)
+
+
+
+📁 Documentos Disponíveis (ideias de conteúdo para linkar no site):
+
+Relatório confidencial (PDF) que ela tentou arquivar como "falha sistêmica de protocolo com paciente infectado".
+
+Transcrição de áudio de uma consulta onde ela se perde no meio do diálogo, falando em código binário.
+
+Um “áudio de meditação digital” que vira um delírio aos 2min45s.
+
+
+🕳️ Segredos
+
+Ela está desenvolvendo uma IA protetora chamada Anima, mas não conta a ninguém.
+
+Tem um diretório secreto no site da P.D.A. com entradas de diário clínico (padrão /anima/entradas/)
