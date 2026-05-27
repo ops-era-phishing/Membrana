@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Desbloquear Segredo</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/src/sha256.min.js"></script>
+</head>
+<body>
+  <h2>Digite a chave para desbloquear o segredo:</h2>
+  <input type="text" id="input-chave" placeholder="Digite aqui...">
+  <button onclick="verificarChave()">Verificar</button>
+
+  <div id="mensagem-secreta" style="display:none; margin-top:20px;">
+    <h3>✨ Você destravou o segredo:</h3>
+    <p>Próximo capítulo: *O Código das Máquinas*...</p>
+  </div>
+
+  <script>
+    const hashEsperado = "a7b1363cf095a8d88671dd1dfa810c444839b77ebdf430bd2e8ad6ca8da65ff4";
+
+    function verificarChave() {
+      const entrada = document.getElementById("input-chave").value.trim();
+      const hashEntrada = sha256(entrada);
+
+      if (hashEntrada === hashEsperado) {
+        document.getElementById("mensagem-secreta").style.display = "block";
+      } else {
+        alert("Chave incorreta. Tente novamente...");
+      }
+    }
+  </script>
+</body>
+</html>

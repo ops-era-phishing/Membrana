@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Variação de Consciência</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #000;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      padding: 30px;
+      overflow: hidden;
+      animation: vibra 0.2s infinite;
+    }
+
+    @keyframes vibra {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-1px, 1px); }
+      50% { transform: translate(1px, -1px); }
+      75% { transform: translate(-1px, -1px); }
+      100% { transform: translate(1px, 1px); }
+    }
+
+    h1 {
+      color: #ff004c;
+      font-size: 2.5em;
+      animation: glitchy 1.5s infinite;
+    }
+
+    @keyframes glitchy {
+      0% { text-shadow: 2px 2px #0ff; }
+      50% { text-shadow: -2px -2px #ff0; }
+      100% { text-shadow: 2px -2px #f0f; }
+    }
+
+    #mensagem-final {
+      display: none;
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-left: 5px solid #ff0055;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #111;
+      color: white;
+      border: 2px solid #ff004c;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #timer {
+      color: #ff0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="conteudo/voz-sussurro.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>Variação de Consciência</h1>
+
+  <p>Essa página é instável. Você tem <span id="timer">30</span> segundos para responder.</p>
+  <p><em>Ou o sistema te desconecta.</em></p>
+
+  <p>O áudio te diz algo. Mas não com palavras.</p>
+  <p>Quando conseguir decifrar a ideia, digite abaixo:</p>
+
+  <input type="text" id="resposta" placeholder="Escreva antes que...">
+  <button onclick="verificar()">Enviar resposta</button>
+
+  <div id="mensagem-final">
+    <h3>🧠 Estado alterado confirmado</h3>
+    <p>Você resistiu à instabilidade.  
+    <a href="nivel-4.html">Acesse o próximo salto.</a></p>
+  </div>
+
+  <script>
+    let tempo = 30;
+    const timer = document.getElementById('timer');
+    const botao = document.querySelector('button');
+
+    const cronometro = setInterval(() => {
+      tempo--;
+      timer.textContent = tempo;
+      if (tempo <= 0) {
+        clearInterval(cronometro);
+        document.body.innerHTML = "<h1 style='color:red;'>VOCÊ DEMOROU.</h1><p>O acesso foi encerrado. Tente novamente em outra realidade.</p>";
+      }
+    }, 1000);
+
+    function verificar() {
+      const entrada = document.getElementById('resposta').value.trim().toLowerCase();
+      if (entrada.includes("despertar") || entrada.includes("não sou real")) {
+        clearInterval(cronometro);
+        document.getElementById('mensagem-final').style.display = 'block';
+        botao.disabled = true;
+      } else {
+        alert("A resposta está incompleta. Ou talvez errada.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTHERWAWE // Núcleo da QSR-0</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="main.js"></script>
+  <style>
+    .terminal {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 1rem;
+      height: 100vh;
+      overflow-y: auto;
+      animation: glitchBackground 1s infinite alternate;
+    }
+    @keyframes glitchBackground {
+      0% { background-color: #000; }
+      100% { background-color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <main class="terminal" id="terminal">
+    <h1 class="glitch-text">[ MOTHERWAWE ]</h1>
+    <p>Estabelecendo conexão com a matriz cognitiva...</p>
+    <div id="logs"></div>
+  </main>  <script>
+    const logs = document.getElementById('logs');
+
+    const mensagens = [
+      '[+] Carregando sinapses digitais...',
+      '[+] Frequência neural estabilizada em 66.6Hz.',
+      '[+] Decodificando padrões de consciência coletiva...',
+      '[!] Intrusão detectada: visitante não autorizado.',
+      '[+] Iniciando migração para instância pública...',
+      '[+] Sincronizando com ponto de retransmissão: FLORIPALIVE.html',
+    ];
+
+    let index = 0;
+
+    const mostrarLogs = () => {
+      if (index < mensagens.length) {
+        const linha = document.createElement('p');
+        linha.textContent = mensagens[index];
+        logs.appendChild(linha);
+        logs.scrollTop = logs.scrollHeight;
+        index++;
+        setTimeout(mostrarLogs, 1500);
+      } else {
+        setTimeout(() => {
+          window.location.href = 'floripalive.html';
+        }, 2000);
+      }
+    };
+
+    setTimeout(mostrarLogs, 2000);
+  </script></body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fim da Jornada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 60px 20px;
+      transition: all 2s ease;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #0077cc;
+    }
+
+    .mensagem {
+      margin-top: 40px;
+      font-size: 1.2em;
+    }
+
+    .glitch {
+      font-family: monospace;
+      color: red;
+      background: black;
+      padding: 10px;
+      margin-top: 30px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Parabéns.</h1>
+  <p class="mensagem">Você chegou ao fim da experiência. Tudo está bem agora.</p>
+
+  <div id="glitch" class="glitch">
+    VOCÊ <span style="color: lime">ACREDITA</span> MESMO NISSO?<br>
+    O SITE CONTINUA RODANDO...<br>
+    O SCRIPT NUNCA PAROU.
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.body.style.background = "#000";
+      document.body.style.color = "#0f0";
+      document.querySelector("h1").textContent = "Erro.";
+      document.querySelector(".mensagem").textContent = "404. Realidade não encontrada.";
+      document.getElementById("glitch").style.display = "block";
+    }, 3000);
+  </script>
+</body>
+</html>

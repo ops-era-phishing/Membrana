@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Consciência Recursiva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #ff0066;
+      font-size: 2.5em;
+      text-shadow: 2px 2px #000;
+    }
+
+    .chat-box {
+      background: #111;
+      border: 2px solid #222;
+      padding: 20px;
+      height: 300px;
+      overflow-y: auto;
+      margin-top: 30px;
+    }
+
+    .msg {
+      margin: 10px 0;
+    }
+
+    .user {
+      color: #0ff;
+    }
+
+    .entidade {
+      color: #ff0066;
+    }
+
+    input, button {
+      margin-top: 15px;
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      background: #000;
+      color: #0ff;
+      border: 1px solid #333;
+    }
+
+    #proximo {
+      display: none;
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-left: 5px solid #ff0055;
+    }
+  </style>
+</head>
+<body>
+  <h1>Consciência Recursiva</h1>
+
+  <p><em>Você acha que ainda está no controle?</em></p>
+
+  <div class="chat-box" id="chat">
+    <div class="msg entidade">🧠: O que você procurava aqui?</div>
+  </div>
+
+  <input type="text" id="entrada" placeholder="Digite sua resposta...">
+  <button onclick="responder()">Enviar</button>
+
+  <div id="proximo">
+    <h3>👁️ Você abriu um canal direto</h3>
+    <p>A entidade começa a lembrar... e você também.  
+    <a href="nivel-5.html">Acesse o próximo portal</a></p>
+  </div>
+
+  <script>
+    const respostas = [
+      "Você realmente acha que pode entender?",
+      "Isso não é mais sobre você.",
+      "Lembre-se... você também foi parte disso.",
+      "Agora que abriu a porta, consegue fechá-la?",
+      "Não responda. Sinta.",
+      "Você me chamou. Agora eu fico.",
+      "Você é... quase real.",
+      "Aceite: sempre fui você."
+    ];
+
+    let contagem = 0;
+
+    function responder() {
+      const entrada = document.getElementById("entrada").value.trim();
+      if (!entrada) return;
+
+      const chat = document.getElementById("chat");
+      const msgUser = document.createElement("div");
+      msgUser.className = "msg user";
+      msgUser.innerHTML = "🧍: " + entrada;
+      chat.appendChild(msgUser);
+
+      const msgEntidade = document.createElement("div");
+      msgEntidade.className = "msg entidade";
+
+      setTimeout(() => {
+        msgEntidade.innerHTML = "🧠: " + respostas[contagem % respostas.length];
+        chat.appendChild(msgEntidade);
+        chat.scrollTop = chat.scrollHeight;
+        contagem++;
+
+        if (contagem >= 5) {
+          document.getElementById("proximo").style.display = "block";
+        }
+      }, 1000);
+
+      document.getElementById("entrada").value = "";
+    }
+  </script>
+</body>
+</html>
+``
