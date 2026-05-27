@@ -1,213 +1,364 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-7270178671003990">
-  <title>Central ARG - ops, era phishing</title>
-  <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7270178671003990"
-     crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google-adsense-account" content="ca-pub-7270178671003990" />
+  <title>Central ARG · Membrana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0c0c0c;
-  color: #fff;
-  line-height: 1.6;
-}
+    }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #111;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-}
+    body {
+      background-color: #0a0c0f;
+      background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.02) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.02) 0%, transparent 50%);
+      color: #e0e0e0;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
+    /* header fixo com blur */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: all 0.2s;
+    }
 
-nav {
-  position: relative;
-}
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #a0f0ff, #ff99ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 5px cyan;
+    }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+    /* menu hambúrguer */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
 
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px;
-  transition: all 0.3s ease;
-}
+    .hamburger div {
+      width: 26px;
+      height: 2px;
+      background: #0ff;
+      transition: all 0.3s ease;
+    }
 
-.hamburger.active .bar1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
+    .hamburger.active .bar1 { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active .bar2 { opacity: 0; }
+    .hamburger.active .bar3 { transform: rotate(-45deg) translate(5px, -5px); }
 
-.hamburger.active .bar2 {
-  opacity: 0;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+    }
 
-.hamburger.active .bar3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
+    .nav-links a {
+      color: #ccddee;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+    }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
+    .nav-links a:hover {
+      color: #0ff;
+      border-bottom-color: #0ff;
+      text-shadow: 0 0 4px cyan;
+    }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
+    main {
+      padding-top: 75px;
+    }
 
-main {
-  padding-top: 60px;
-}
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
-.section {
-  padding: 4rem 1rem;
-  max-width: 900px;
-  margin: auto;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-}
+    .section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.section.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      border-left: 5px solid cyan;
+      padding-left: 1rem;
+      letter-spacing: -0.5px;
+    }
 
-.setores-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #bbccff;
+    }
 
-.card {
-  background: #222;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  border: 1px solid #444;
-  transition: background 0.3s ease;
-}
+    /* grid de cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-.card:hover {
-  background: #333;
-}
+    .card {
+      background: rgba(18, 22, 30, 0.8);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 1.4rem;
+      text-decoration: none;
+      color: #f0f0f0;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
 
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: #111;
-  margin-top: 4rem;
-}
+    .card i {
+      font-size: 2rem;
+      color: #0ff;
+    }
 
-footer a {
-  color: #fff;
-}
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
+    .card p {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
 
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #111;
-    flex-direction: column;
-    width: 200px;
-    text-align: right;
-    padding: 1rem;
-  }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: cyan;
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+      background: rgba(20, 30, 45, 0.9);
+    }
 
-  .nav-links.show {
-    display: flex;
-  }
-}
+    /* botão principal */
+    .btn-acesso {
+      background: linear-gradient(90deg, #00c3ff, #ff00c3);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 60px;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 1rem;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    }
 
+    .btn-acesso:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px cyan;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #05070a;
+      border-top: 1px solid #1f3a4a;
+      font-size: 0.85rem;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    /* responsivo */
+    @media (max-width: 768px) {
+      header {
+        padding: 0.8rem 1.2rem;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(8, 10, 18, 0.95);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        width: 220px;
+        padding: 1.2rem;
+        border-radius: 20px;
+        gap: 1rem;
+        text-align: right;
+        border: 1px solid cyan;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .section {
+        padding: 3rem 1rem;
+      }
+    }
+
+    /* glitch pequeno */
+    @keyframes subtleGlitch {
+      0% { text-shadow: -1px 0 red; }
+      50% { text-shadow: 1px 0 cyan; }
+      100% { text-shadow: 0 0 magenta; }
+    }
+    .logo:hover {
+      animation: subtleGlitch 0.3s infinite;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">ops, era phishing</div>
-    <nav>
-      <div class="hamburger" id="hamburger">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#missao">Missão</a></li>
-        <li><a href="#setores">Setores</a></li>
-        <li><a href="#acesso">Acesso</a></li>
-      </ul>
-    </nav>
-  </header>  <main>
-    <section id="inicio" class="section">
-      <h2>⚠️ Alerta Geral</h2>
-      <p>Este é o início da central de inteligência do ARG "MEMBRANA". Prepare-se para entrar no rastro da QSR-0.</p>
-    </section><section id="missao" class="section">
-  <h2>📡 Missão</h2>
-  <p>Você está prestes a mergulhar em uma rede de conspirações digitais. Seu objetivo é seguir as pistas e descobrir o que realmente está por trás da E.G.O. Technologies e sua IA fugitiva.</p>
-</section>
 
-<section id="setores" class="section">
-  <h2>🧭 Setores de Operação</h2>
-  <div class="setores-grid">
-    <a href="membrana_news.html" class="card">🔊 Avisos Oficiais</a>
-  <div class="setores-grid">
-    <a href="jornal/jornal.html" class="card">🗞 Jornal Local</a>
-    <a href="departamento_investigacao/departamento_investigacao.html" class="card">🕵️ Departamento de Investigação</a>
-    <a href="arquivo/arquivo.html" class="card">📁 Arquivo Membrana</a>
-    <a href="comunicado.html" class="card">💻 Fórum Civil</a>
-    <a href="wiki/qsr-terminal.html" class="card">🔞 Wiki Escura</a>
-    <a href="info.html" class="card">➕ INFO</a>
-    <a href="./../P.D.A/index.html" class="card">📝💆P.D.A</a>
-  </div>
-</section>
+<header>
+  <div class="logo">⌇ MEMBRANA · ARG</div>
+  <nav>
+    <div class="hamburger" id="hamburger">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#setores">Setores</a></li>
+      <li><a href="#lore">Lore +</a></li>
+      <li><a href="#acesso">Acesso</a></li>
+    </ul>
+  </nav>
+</header>
 
-<section id="acesso" class="section acesso">
-  <h2>🎮 Começar Jogo</h2>
-  <button onclick="alert('Iniciando protocolo QRS-0 da ops, era phishing... leia as informações gerais sobre sua segurança')"id="meuBotao">Entrar na Membrana</button>
-</section>
+<main>
+  <!-- seção herói -->
+  <section id="inicio" class="section hero">
+    <h2>⚠️ PROTOCOLO MEMBRANA</h2>
+    <p>Bem-vindo à central de inteligência do ARG. A QSR-0 já está ativa. Seu objetivo: seguir os rastros digitais, decifrar enigmas e expor a verdade por trás da E.G.O. Technologies.</p>
+    <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #ff77aa;">🔻 a seguir, todos os portais do universo conspiratório 🔻</p>
+  </section>
 
-  </main>  <footer>
-    <p>© 2025 Central ARG - <a href="#">ops, era phishing</a>. Todos os dados são ficção (ou não).</p>
-  </footer>  <script src="script.js"></script>
+  <!-- SETORES PRINCIPAIS (links diretos do lore) -->
+  <section id="setores" class="section">
+    <h2>📡 Setores de investigação</h2>
+    <div class="cards-grid">
+      <a href="membrana_news.html" class="card"><i class="fas fa-bullhorn"></i><h3>Avisos Oficiais</h3><p>Alertas e comunicados da rede MEMBRANA.</p></a>
+      <a href="jornal/jornal.html" class="card"><i class="fas fa-newspaper"></i><h3>Jornal Local</h3><p>O Observador de Floripa — 1998.</p></a>
+      <a href="departamento_investigacao/departamento_investigacao.html" class="card"><i class="fas fa-shield-hawk"></i><h3>PPD</h3><p>Polícia de Perseguição Digital, casos abertos.</p></a>
+      <a href="arquivo/arquivo.html" class="card"><i class="fas fa-folder-open"></i><h3>Arquivo Membrana</h3><p>Documentos vazados, relatórios internos.</p></a>
+      <a href="comunicado.html" class="card"><i class="fas fa-users"></i><h3>Fórum Civil</h3><p>Relatos de testemunhas e sobreviventes.</p></a>
+      <a href="wiki/qsr-terminal.html" class="card"><i class="fas fa-skull"></i><h3>Wiki Escura</h3><p>Terminal QSR‑0, enigmas e backdoors.</p></a>
+      <a href="info.html" class="card"><i class="fas fa-circle-info"></i><h3>INFO</h3><p>Glossário e cronologia do ARG.</p></a>
+      <a href="./../P.D.A/index.html" class="card"><i class="fas fa-pda"></i><h3>P.D.A</h3><p>Dispositivo pessoal – diários criptografados.</p></a>
+    </div>
+  </section>
+
+  <!-- LORE EXPANDIDO (novos portais solicitados) -->
+  <section id="lore" class="section">
+    <h2>⎔ Expansão do universo</h2>
+    <div class="cards-grid">
+      <a href="opening-membrana.html" class="card"><i class="fas fa-dharmachakra"></i><h3>Membrana · Ingresso</h3><p>Portal de carregamento quântico.</p></a>
+      <a href="wiki-darkweb.html" class="card"><i class="fas fa-eye"></i><h3>Dark Wiki</h3><p>Segredos da deep web conspiratória.</p></a>
+      <a href="termos-transparencia.html" class="card"><i class="fas fa-file-signature"></i><h3>Termos & Transparência</h3><p>Documentos legais (ou armadilhas).</p></a>
+      <a href="arquivos-lysander.html" class="card"><i class="fas fa-user-md"></i><h3>Dr. Lysander Morrow</h3><p>Arquivos pessoais do criador da QSR-0.</p></a>
+      <a href="enigmas.html" class="card"><i class="fas fa-puzzle-piece"></i><h3>Enigmas</h3><p>Desafios para agentes autorizados.</p></a>
+      <a href="ego-technologies.com.html" class="card"><i class="fas fa-microchip"></i><h3>E.G.O. Tech</h3><p>Site institucional (legado fantasma).</p></a>
+      <a href="historias-arg.html" class="card"><i class="fas fa-book-atlas"></i><h3>Histórias</h3><p>Narrativas perdidas do ARG.</p></a>
+      <a href="https://github.com/knnrz/qrs-zero" class="card"><i class="fab fa-github"></i><h3>GitHub oficial</h3><p>Repositório do projeto MEMBRANA.</p></a>
+    </div>
+  </section>
+
+  <!-- ACESSO / INICIAR -->
+  <section id="acesso" class="section">
+    <h2>🎮 Iniciar interface neural</h2>
+    <p style="margin-bottom: 1rem;">Clique abaixo para adentrar a membrana e receber seu primeiro protocolo.</p>
+    <button class="btn-acesso" id="btnEntrar">⟡ ENTRAR NA MEMBRANA ⟡</button>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Central ARG · <a href="#">ops, era phishing</a> · Todos os dados são ficção — ou parte de um experimento quântico.</p>
+</footer>
+
 <script>
-  document.getElementById("meuBotao").addEventListener("click", function () {
-    // Mostra o pop-up (pode ser um alert ou algo mais estiloso com CSS/JS);
+  (function() {
+    // ---- ANIMAÇÃO REVEAL AO SCROLL (Intersection Observer) ----
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target); // uma vez revelado, para de observar
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    sections.forEach(section => observer.observe(section));
 
-    // Espera 1 segundos e redireciona
-    setTimeout(function () {
-      window.location.href = "info.html";
-    }, 1000);
-  });
+    // ---- MENU HAMBÚRGUER RESPONSIVO ----
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('show');
+      });
+      // Fecha o menu ao clicar em um link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('show');
+        });
+      });
+    }
+
+    // ---- BOTÃO PRINCIPAL (redireciona para a abertura do ARG) ----
+    const btn = document.getElementById('btnEntrar');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.textContent = "⬤ ACESSANDO MEMBRANA...";
+        btn.disabled = true;
+        setTimeout(() => {
+          // escolha da página inicial do jogo: pode ser info.html ou opening-membrana.html
+          window.location.href = "opening-membrana.html";
+        }, 1000);
+      });
+    }
+
+    // pequeno glitch no console para imersão
+    console.log("%c⚠️ ACESSO AUTORIZADO — você está na grade principal da MEMBRANA.", "color: #0ff; font-size: 14px;");
+    console.log("%cExplore os setores. A QSR-0 observa.", "color: magenta;");
+  })();
 </script>
 </body>
 </html>
