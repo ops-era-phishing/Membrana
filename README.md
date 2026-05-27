@@ -54,6 +54,6 @@ A Membrana só quer o que você decide mostrar a ela.
 **Clique para entrar.**
 ---
 
-🔗 [https://ops-era-phishing.github.io/Membrana/](https://ops-era-phishing.github.io/Membrana/)
+🔗 [https://ops-era-phishing.github.io/membrana-core/](https://ops-era-phishing.github.io/membrana-core/)
 
 ---
